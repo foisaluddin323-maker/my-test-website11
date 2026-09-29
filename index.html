@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>রক্ত ও সঞ্চালন - পরীক্ষা</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f7f2; --card:#ffffff; --text:#1c2b1e; --sub:#5b6b5d;
+  --accent:#2e7d32; --accent-dark:#1b5e20; --danger:#c62828; --danger-bg:#fdecea;
+  --ok-bg:#e8f5e9; --border:#dfe6dd; --lock:#eceeea;
+  box-sizing:border-box;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12160f; --card:#1b2118; --text:#eef2ea; --sub:#a9b6a6;
+    --accent:#66bb6a; --accent-dark:#43a047; --danger:#ef5350; --danger-bg:#3a1a19;
+    --ok-bg:#173620; --border:#2b332a; --lock:#242b21;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12160f; --card:#1b2118; --text:#eef2ea; --sub:#a9b6a6;
+  --accent:#66bb6a; --accent-dark:#43a047; --danger:#ef5350; --danger-bg:#3a1a19;
+  --ok-bg:#173620; --border:#2b332a; --lock:#242b21;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  min-height:100%;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.wrap{max-width:480px;margin:0 auto;padding:18px 16px 40px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px}
+h1{font-size:1.25rem;margin:0 0 4px;color:var(--accent-dark)}
+h2{font-size:1.05rem;margin:0 0 10px}
+.tag{display:inline-block;background:var(--ok-bg);color:var(--accent-dark);font-size:.78rem;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:600}
+.sub{color:var(--sub);font-size:.9rem;margin:0 0 14px}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+input[type=text]{
+  width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--border);
+  background:var(--bg);color:var(--text);font-family:inherit;font-size:1rem;margin-bottom:14px
+}
+ul.rules{margin:0 0 16px;padding-left:20px;font-size:.92rem;line-height:1.7}
+ul.rules li{margin-bottom:4px}
+button{
+  width:100%;padding:14px;border:none;border-radius:12px;background:var(--accent);color:#fff;
+  font-family:inherit;font-size:1.02rem;font-weight:600;cursor:pointer
+}
+button:active{background:var(--accent-dark)}
+button.secondary{background:var(--lock);color:var(--text)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.9rem}
+.timer{font-weight:700;color:var(--danger);background:var(--danger-bg);padding:5px 12px;border-radius:20px}
+.qnum{color:var(--sub);font-weight:600}
+.qtext{font-size:1.05rem;font-weight:600;margin-bottom:16px;line-height:1.5}
+.opt{
+  display:block;width:100%;text-align:left;padding:13px 14px;margin-bottom:10px;border-radius:12px;
+  border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:.97rem;
+  cursor:pointer;line-height:1.4
+}
+.opt.selected{border-color:var(--accent);background:var(--ok-bg);font-weight:600}
+.opt.locked{cursor:not-allowed}
+.opt[disabled]{opacity:.85}
+.progress{height:6px;background:var(--lock);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.progress > div{height:100%;background:var(--accent)}
+.center{text-align:center}
+.score{font-size:2.4rem;font-weight:800;color:var(--accent-dark);margin:6px 0}
+.reviewq{border-top:1px solid var(--border);padding:14px 0;font-size:.92rem}
+.reviewq .qt{font-weight:600;margin-bottom:8px}
+.ans-row{padding:6px 10px;border-radius:8px;margin-bottom:4px}
+.ans-row.correct{background:var(--ok-bg)}
+.ans-row.wrong{background:var(--danger-bg)}
+.badge{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px}
+.badge.right{background:var(--ok-bg);color:var(--accent-dark)}
+.badge.wrong{background:var(--danger-bg);color:var(--danger)}
+.hidden{display:none}
+.warnbox{background:var(--danger-bg);color:var(--danger);border-radius:10px;padding:12px 14px;font-size:.88rem;margin-bottom:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- SCREEN: START -->
+  <div id="screen-start">
+    <div class="card">
+      <span class="tag">জীববিজ্ঞান</span>
+      <h1>রক্ত ও সঞ্চালন</h1>
+      <p class="sub">বিশ্ববিদ্যালয় ভর্তি পরীক্ষার প্রশ্ন | ৩০টি প্রশ্ন | সময়: ২৩ মিনিট</p>
+      <label for="sname">তোমার নাম লেখো</label>
+      <input type="text" id="sname" placeholder="যেমন: Md Foysal Uddin">
+      <div id="start-err" class="warnbox hidden">অনুগ্রহ করে নাম লেখো।</div>
+      <button id="btn-goto-rules">এগিয়ে যাও</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: RULES -->
+  <div id="screen-rules" class="hidden">
+    <div class="card">
+      <h2>নিয়মাবলী পড়ে নাও</h2>
+      <ul class="rules">
+        <li>মোট প্রশ্ন ৩০টি, সময় মোট ২৩ মিনিট — সময় শেষ হলে পরীক্ষা অটো সাবমিট হবে।</li>
+        <li>প্রতি ভুল উত্তরে <b>-০.২৫</b> নম্বর কাটা যাবে।</li>
+        <li>একটি অপশন সিলেক্ট করলে তা আর পরিবর্তন করা যাবে না (লক হয়ে যাবে)।</li>
+        <li>পরীক্ষা চলাকালীন ট্যাব পরিবর্তন করলে বা অ্যাপ মিনিমাইজ করলে পরীক্ষা সাথে সাথে বন্ধ হয়ে যাবে।</li>
+        <li>এই পরীক্ষা একবারই দেওয়া যাবে — এই ব্রাউজার থেকে দ্বিতীয়বার দেওয়া যাবে না।</li>
+        <li>শেষে তোমার স্কোর এবং কোন প্রশ্নে ভুল হয়েছে তা সঠিক উত্তরসহ দেখানো হবে।</li>
+      </ul>
+      <button id="btn-start-exam">আমি বুঝেছি, পরীক্ষা শুরু করো</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: ALREADY DONE -->
+  <div id="screen-blocked" class="hidden">
+    <div class="card center">
+      <h2>এই পরীক্ষা ইতিমধ্যে দেওয়া হয়েছে</h2>
+      <p class="sub">এই ব্রাউজার থেকে একবার পরীক্ষা দেওয়া হয়ে গেছে। দ্বিতীয়বার দেওয়া যাবে না।</p>
+    </div>
+  </div>
+
+  <!-- SCREEN: EXAM -->
+  <div id="screen-exam" class="hidden">
+    <div class="topbar">
+      <span class="qnum" id="qcounter">প্রশ্ন ১/৩০</span>
+      <span class="timer" id="timer">২৩:০০</span>
+    </div>
+    <div class="progress"><div id="progressbar" style="width:5%"></div></div>
+    <div class="card">
+      <div class="qtext" id="qtext"></div>
+      <div id="options"></div>
+      <button id="btn-next" disabled>পরের প্রশ্ন</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: STOPPED (tab switch) -->
+  <div id="screen-stopped" class="hidden">
+    <div class="card center">
+      <h2>পরীক্ষা বন্ধ হয়ে গেছে</h2>
+      <p class="sub">তুমি ট্যাব পরিবর্তন করেছিলে বা অ্যাপ মিনিমাইজ করেছিলে, তাই নিয়ম অনুযায়ী পরীক্ষা বন্ধ করে দেওয়া হয়েছে। তোমার এতক্ষণের উত্তর অনুযায়ী ফলাফল দেখানো হচ্ছে।</p>
+      <button id="btn-see-result-stopped">ফলাফল দেখো</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: RESULT -->
+  <div id="screen-result" class="hidden">
+    <div class="card center">
+      <h2 id="res-name"></h2>
+      <p class="sub">রক্ত ও সঞ্চালন</p>
+      <div class="score" id="res-score"></div>
+      <p class="sub" id="res-detail"></p>
+      <button id="btn-share" style="margin-top:8px">ফলাফল পাঠাও / কপি করো</button>
+      <p class="sub" id="share-msg" style="margin-top:8px"></p>
+    </div>
+    <div class="card">
+      <h2>বিস্তারিত ফলাফল</h2>
+      <div id="review"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS_RAW = [
+{
+"q": "রক্তরসে পানির পরিমাণ কত?",
+"o": [
+"40-50%",
+"55-65%",
+"70-80%",
+"90-92%"
+],
+"a": 3
+},
+{
+"q": "মানুষের রক্তে লোহিত রক্তকণিকা (RBC) ও শ্বেত রক্তকণিকার (WBC) অনুপাত কত?",
+"o": [
+"500:1",
+"600:1",
+"700:1",
+"800:1"
+],
+"a": 1
+},
+{
+"q": "কোন অঙ্গকে লোহিত রক্তকণিকার ‘কবরস্থান’ (Graveyard of RBC) বলা হয়?",
+"o": [
+"যকৃৎ",
+"প্লীহা",
+"বৃক্ক",
+"ফুসফুস"
+],
+"a": 1
+},
+{
+"q": "রক্তজমাট বাঁধায় (Blood Clotting) কোন ধাতব আয়ন সরাসরি অংশগ্রহণ করে?",
+"o": [
+"Na+",
+"K+",
+"Ca2+",
+"Fe2+"
+],
+"a": 2
+},
+{
+"q": "হেপারিন (Heparin) ক্ষরণ করে রক্তনালীর ভেতরে রক্ত জমাট বাঁধতে বাধা দেয় কোন শ্বেত রক্তকণিকা?",
+"o": [
+"নিউট্রোফিল",
+"বেসোফিল",
+"ইওসিনোফিল",
+"লিম্ফোসাইট"
+],
+"a": 1
+},
+{
+"q": "হৃৎপিণ্ডের কোন অংশকে 'প্রাকৃতিক পেসমেকার' (Natural Pacemaker) বলা হয়?",
+"o": [
+"AV node",
+"SA node",
+"Bundle of His",
+"Purkinje fibers"
+],
+"a": 1
+},
+{
+"q": "অ্যালার্জি প্রতিরোধে এবং হিস্টামিন নিঃসরণে প্রধান ভূমিকা পালন করে কোন রক্তকণিকা?",
+"o": [
+"নিউট্রোফিল",
+"ইওসিনোফিল",
+"মোনোসাইট",
+"অণুচক্রিকা"
+],
+"a": 1
+},
+{
+"q": "মানুষের রক্ত সংবহনতন্ত্রে প্লাটিলেট (Platelet)-এর প্রধান কাজ কোনটি?",
+"o": [
+"অক্সিজেন পরিবহন",
+"ফ্যাগোসাইটোসিস",
+"রক্ত তঞ্চন (Blood Clotting)",
+"অ্যান্টিবডি তৈরি"
+],
+"a": 2
+},
+{
+"q": "কোন রক্তনালী হৃৎপিণ্ডের পেশিতে (Myocardium) রক্ত সরবরাহ করে?",
+"o": [
+"পালমোনারি ধমনী",
+"রেনাল ধমনী",
+"করোনারি ধমনী",
+"ক্যারোটিড ধমনী"
+],
+"a": 2
+},
+{
+"q": "মানবদেহে একটি পূর্ণাঙ্গ কার্ডিয়াক চক্রের (Cardiac Cycle) সময়কাল কত সেকেন্ড?",
+"o": [
+"০.৫ সে.",
+"০.৬ সে.",
+"০.৮ সে.",
+"১.০ সে."
+],
+"a": 2
+},
+{
+"q": "অ্যান্টিবডি (Antibody) উৎপন্ন করে অনাক্রম্যতা (Immunity) দান করে কোন কোষ?",
+"o": [
+"B-লিম্ফোসাইট",
+"T-লিম্ফোসাইট",
+"নিউট্রোফিল",
+"এরিথ্রোসাইট"
+],
+"a": 0
+},
+{
+"q": "ফ্যাগোসাইটোসিস প্রক্রিয়ায় জীবাণু ধ্বংস করে কোন শ্বেত রক্তকণিকা জোড়?",
+"o": [
+"নিউট্রোফিল ও মোনোসাইট",
+"ইওসিনোফিল ও বেসোফিল",
+"লিম্ফোসাইট ও অণুচক্রিকা",
+"বেসোফিল ও নিউট্রোফিল"
+],
+"a": 0
+},
+{
+"q": "ক্লটিং ফ্যাক্টর VIII (Factor VIII)-এর অভাবে কোন বংশগত রক্তক্ষরণজনিত রোগ হয়?",
+"o": [
+"থ্যালাসেমিয়া",
+"ক্লাসিক হিমোফিলিয়া-A",
+"ক্রিসমাস ডিজিজ",
+"সিকেল সেল অ্যানিমিয়া"
+],
+"a": 1
+},
+{
+"q": "হৃৎপিণ্ডের ডান অলিন্দ ও ডান নিলয়ের মধ্যবর্তী ছিদ্রে কোন কপাটিকা (Valve) থাকে?",
+"o": [
+"ট্রাইকাসপিড",
+"বাইকাসপিড/মিট্রাল",
+"সেমিলুনার",
+"ইউস্টেচিয়ান"
+],
+"a": 0
+},
+{
+"q": "ফুসফুস থেকে অক্সিজেনযুক্ত রক্ত হৃৎপিণ্ডের কোন প্রকোষ্ঠে প্রবেশ করে?",
+"o": [
+"ডান অলিন্দ",
+"বাম অলিন্দ",
+"ডান নিলয়",
+"বাম নিলয়"
+],
+"a": 1
+},
+{
+"q": "মানবদেহের স্বাভাবিক রক্তের pH কত?",
+"o": [
+"৬.৩৫ - ৬.৪৫",
+"৭.৩৫ - ৭.৪৫",
+"৭.৭৫ - ৭.৮৫",
+"৮.০ - ৮.৫"
+],
+"a": 1
+},
+{
+"q": "হৃৎপিণ্ডের পেশির হঠাৎ রক্তের তীব্র অভাবজনিত বুকব্যথাকে কী বলা হয়?",
+"o": [
+"হার্ট অ্যাটাক",
+"অ্যানজাইনা (Angina Pectoris)",
+"কার্ডিয়াক অ্যারেস্ট",
+"আর্টেরিওস্ক্লেরোসিস"
+],
+"a": 1
+},
+{
+"q": "মানুষের রক্তে প্রধান বাফার সিস্টেম কোনটি যা pH নিয়ন্ত্রণ করে?",
+"o": [
+"বাইকার্বোনেট বাফার",
+"অ্যাসিটেট বাফার",
+"সাইট্রেট বাফার",
+"নাইট্রেট বাফার"
+],
+"a": 0
+},
+{
+"q": "করোনারি ধমনীতে ব্লক সরিয়ে রক্তপ্রবাহ স্বাভাবিক করতে স্টেন্ট বসানোকে কী বলে?",
+"o": [
+"বাইপাস সার্জারি",
+"করোনারি স্টেনটিং",
+"পেসমেকার ইমপ্লান্ট",
+"ওপেন হার্ট সার্জারি"
+],
+"a": 1
+},
+{
+"q": "যে বিশেষ সংবহনের মাধ্যমে পরিপাকনালী থেকে শোষিত খাদ্য যকৃতে পৌঁছায় তাকে কী বলে?",
+"o": [
+"সিস্টেমিক সংবহন",
+"পালমোনারি সংবহন",
+"হেপাটিক পোর্টাল সংবহন",
+"করোনারি সংবহন"
+],
+"a": 2
+},
+{
+"q": "ভ্রূণ অবস্থায় লোহিত রক্তকণিকা (RBC) প্রধানত কোথায় উৎপন্ন হয়?",
+"o": [
+"লাল অস্থিমজ্জা",
+"যকৃৎ ও প্লীহা",
+"থাইমাস",
+"বৃক্ক"
+],
+"a": 1
+},
+{
+"q": "কোন প্লাজমা প্রোটিন রক্তরসের অভিস্রবণিক চাপ (Osmotic Pressure) নিয়ন্ত্রণে প্রধান কাজ করে?",
+"o": [
+"অ্যালবুমিন",
+"গ্লোবিউলিন",
+"ফাইব্রিনোজেন",
+"প্রোথ্রম্বিন"
+],
+"a": 0
+},
+{
+"q": "রক্তচাপ মাপার যন্ত্রের নাম কী?",
+"o": [
+"গ্লুকোমিটার",
+"স্ফিগমোম্যানোমিটার",
+"স্ট্রেথোস্কোপ",
+"স্পাইরোমিটার"
+],
+"a": 1
+},
+{
+"q": "হৃৎপিণ্ডের চারপাশের প্রতিরক্ষামূলক দ্বি-স্তরী আবরণের নাম কী?",
+"o": [
+"প্লুরা",
+"পেরিকার্ডিয়াম",
+"পেরিটোনিয়াম",
+"পেরিঅস্টিয়াম"
+],
+"a": 1
+},
+{
+"q": "রক্তরসে ফাইব্রিনোজেন বাদ দিলে অবশিষ্ট খড় রঙের তরল অংশকে কী বলে?",
+"o": [
+"প্লাজমা",
+"লিম্ফ",
+"সিরাম (Serum)",
+"সাইনোভিয়াল তরল"
+],
+"a": 2
+},
+{
+"q": "কোন হরমোন লোহিত রক্তকণিকা উৎপাদনে (Erythropoiesis) উদ্দীপনা জোগায়?",
+"o": [
+"থাইরক্সিন",
+"ইরিথ্রোপয়েটিন",
+"ইনসুলিন",
+"অ্যাড্রেনালিন"
+],
+"a": 1
+},
+{
+"q": "হৃদচক্রের কোন পর্যায়ে বাম নিলয় থেকে O2 সমৃদ্ধ রক্ত মহাধমনীতে প্রবেশ করে?",
+"o": [
+"অলিন্দের সিস্টোল",
+"অলিন্দের ডায়াস্টোল",
+"নিলয়ের সিস্টোল",
+"নিলয়ের ডায়াস্টোল"
+],
+"a": 2
+},
+{
+"q": "রক্তে অণুচক্রিকার (Platelet) সংখ্যা স্বাভাবিকের চেয়ে কমে যাওয়াকে কী বলে?",
+"o": [
+"লিউকোমিয়া",
+"থ্রম্বোসাইটোপেনিয়া",
+"অ্যানিমিয়া",
+"পলিসাইথেমিয়া"
+],
+"a": 1
+},
+{
+"q": "হৃৎপিণ্ডের পেশির মাঝের পুরু ও শক্তিশালী সংকোচনশীল স্তর কোনটি?",
+"o": [
+"এপিকার্ডিয়াম",
+"মায়োকার্ডিয়াম",
+"এন্ডোকার্ডিয়াম",
+"পেরিকার্ডিয়াম"
+],
+"a": 1
+},
+{
+"q": "লসিকাতন্ত্রে অবস্থিত দুধের মতো সাদা ফ্যাট সমৃদ্ধ লসিকাকে কী বলা হয়?",
+"o": [
+"কাইল (Chyle)",
+"সিরাম",
+"প্লাজমা",
+"ল্যাকটিয়াল"
+],
+"a": 0
+}
+];
+
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+let QUESTIONS = shuffle(QUESTIONS_RAW).map(item=>{
+  const order = shuffle([0,1,2,3]);
+  const newOptions = order.map(i=>item.o[i]);
+  const newAnswer = order.indexOf(item.a);
+  return {q:item.q, o:newOptions, a:newAnswer};
+});
+
+const TOTAL_TIME = 23 * 60; // ২৩ মিনিট = ১৩৮০ সেকেন্ড
+const NEG = 0.25;
+const LOCK_KEY = "biology_blood_circulation_exam_done_v1";
+
+let idx=0, answers=new Array(QUESTIONS.length).fill(null), timeLeft=TOTAL_TIME, timerId=null, studentName="", finished=false;
+
+const $=id=>document.getElementById(id);
+function show(id){
+  ["screen-start","screen-rules","screen-blocked","screen-exam","screen-stopped","screen-result"].forEach(s=>$(s).classList.add("hidden"));
+  $(id).classList.remove("hidden");
+}
+
+function alreadyDone(){
+  try{ return localStorage.getItem(LOCK_KEY)==="1"; }catch(e){ return false; }
+}
+function markDone(){
+  try{ localStorage.setItem(LOCK_KEY,"1"); }catch(e){}
+}
+
+window.addEventListener("load", ()=>{
+  if(alreadyDone()){ show("screen-blocked"); return; }
+  show("screen-start");
+});
+
+$("btn-goto-rules").addEventListener("click", ()=>{
+  const v=$("sname").value.trim();
+  if(!v){ $("start-err").classList.remove("hidden"); return; }
+  studentName=v; $("start-err").classList.add("hidden");
+  show("screen-rules");
+});
+
+$("btn-start-exam").addEventListener("click", ()=>{
+  show("screen-exam");
+  renderQ();
+  startTimer();
+});
+
+function startTimer(){
+  timerId=setInterval(()=>{
+    timeLeft--;
+    updateTimerDisplay();
+    if(timeLeft<=0){ clearInterval(timerId); finishExam(false); }
+  },1000);
+}
+function updateTimerDisplay(){
+  const m=Math.floor(timeLeft/60), s=timeLeft%60;
+  $("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+
+function renderQ(){
+  const item=QUESTIONS[idx];
+  $("qcounter").textContent="প্রশ্ন "+(idx+1)+"/"+QUESTIONS.length;
+  $("progressbar").style.width=Math.round(((idx)/QUESTIONS.length)*100)+"%";
+  $("qtext").textContent=(idx+1)+". "+item.q;
+  const box=$("options"); box.innerHTML="";
+  item.o.forEach((opt,i)=>{
+    const b=document.createElement("button");
+    b.className="opt"; b.type="button";
+    b.textContent=["ক","খ","গ","ঘ"][i]+") "+opt;
+    b.addEventListener("click",()=>selectOption(i));
+    if(answers[idx]!==null){
+      b.classList.add("locked"); b.disabled=true;
+      if(answers[idx]===i) b.classList.add("selected");
+    }
+    box.appendChild(b);
+  });
+  $("btn-next").disabled = answers[idx]===null;
+  $("btn-next").textContent = (idx===QUESTIONS.length-1) ? "পরীক্ষা জমা দাও" : "পরের প্রশ্ন";
+}
+
+function selectOption(i){
+  if(answers[idx]!==null) return;
+  answers[idx]=i;
+  renderQ();
+}
+
+$("btn-next").addEventListener("click", ()=>{
+  if(answers[idx]===null) return;
+  if(idx===QUESTIONS.length-1){
+    clearInterval(timerId);
+    finishExam(false);
+  } else {
+    idx++;
+    renderQ();
+  }
+});
+
+document.addEventListener("visibilitychange", ()=>{
+  if(document.hidden && !finished && $("screen-exam").classList.contains("hidden")===false){
+    clearInterval(timerId);
+    finishExam(true);
+  }
+});
+
+function computeScore(){
+  let correct=0, wrong=0, unattempted=0;
+  QUESTIONS.forEach((item,i)=>{
+    if(answers[i]===null) unattempted++;
+    else if(answers[i]===item.a) correct++;
+    else wrong++;
+  });
+  const score = correct - wrong*NEG;
+  return {correct,wrong,unattempted,score};
+}
+
+function finishExam(stoppedByTabSwitch){
+  finished=true;
+  markDone();
+  if(stoppedByTabSwitch){
+    renderResult();
+    show("screen-stopped");
+  } else {
+    renderResult();
+    show("screen-result");
+  }
+}
+
+$("btn-see-result-stopped").addEventListener("click", ()=>{ show("screen-result"); });
+
+function renderResult(){
+  const r=computeScore();
+  $("res-name").textContent=studentName;
+  $("res-score").textContent=r.score.toFixed(2)+" / "+QUESTIONS.length;
+  $("res-detail").textContent="সঠিক: "+r.correct+" | ভুল: "+r.wrong+" | অনুত্তরিত: "+r.unattempted+" | নেগেটিভ মার্কিং: -০.২৫ প্রতি ভুলে";
+
+  const box=$("review"); box.innerHTML="";
+  QUESTIONS.forEach((item,i)=>{
+    const userAns=answers[i];
+    const isCorrect = userAns===item.a;
+    const div=document.createElement("div");
+    div.className="reviewq";
+    let html = "<div class='qt'>"+(i+1)+". "+item.q+"</div>";
+    if(userAns===null){
+      html += "<div class='ans-row wrong'><span class='badge wrong'>অনুত্তরিত</span> সঠিক উত্তর: "+["ক","খ","গ","ঘ"][item.a]+") "+item.o[item.a]+"</div>";
+    } else if(isCorrect){
+      html += "<div class='ans-row correct'><span class='badge right'>সঠিক</span> তোমার উত্তর: "+["ক","খ","গ","ঘ"][userAns]+") "+item.o[userAns]+"</div>";
+    } else {
+      html += "<div class='ans-row wrong'><span class='badge wrong'>ভুল</span> তোমার উত্তর: "+["ক","খ","গ","ঘ"][userAns]+") "+item.o[userAns]+"</div>";
+      html += "<div class='ans-row correct'>সঠিক উত্তর: "+["ক","খ","গ","ঘ"][item.a]+") "+item.o[item.a]+"</div>";
+    }
+    div.innerHTML=html;
+    box.appendChild(div);
+  });
+}
+
+$("btn-share").addEventListener("click", async ()=>{
+  const r=computeScore();
+  const text="নাম: "+studentName+"\nপরীক্ষা: "+document.title+"\nস্কোর: "+r.score.toFixed(2)+" / "+QUESTIONS.length+"\nসঠিক: "+r.correct+", ভুল: "+r.wrong+", অনুত্তরিত: "+r.unattempted;
+  const msg=$("share-msg");
+  try{
+    if(navigator.share){ await navigator.share({text}); msg.textContent="শেয়ার হয়েছে।"; return; }
+  }catch(e){ if(e && e.name==="AbortError") return; }
+  try{
+    await navigator.clipboard.writeText(text);
+    msg.textContent="কপি হয়েছে — এখন হোয়াটসঅ্যাপ/মেসেঞ্জারে পেস্ট করে পাঠাও।";
+  }catch(e){
+    msg.textContent="কপি হয়নি। এই লেখাটা হাতে কপি করো: "+text.replace(/\n/g," | ");
+  }
+});
+</script>
+</body>
+</html>
