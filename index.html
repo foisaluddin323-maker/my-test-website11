@@ -48,12 +48,13 @@ input[type=text]{
 ul.rules{margin:0 0 16px;padding-left:20px;font-size:.92rem;line-height:1.7}
 ul.rules li{margin-bottom:4px}
 button{
-  width:100%;padding:14px;border:none;border-radius:12px;background:var(--accent);color:#fff;
-  font-family:inherit;font-size:1.02rem;font-weight:600;cursor:pointer
+  padding:12px 14px;border:none;border-radius:12px;background:var(--accent);color:#fff;
+  font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer
 }
 button:active{background:var(--accent-dark)}
 button.secondary{background:var(--lock);color:var(--text)}
-button:disabled{opacity:.5;cursor:not-allowed}
+button.danger{background:var(--danger);color:#fff}
+button:disabled{opacity:.4;cursor:not-allowed}
 .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.9rem}
 .timer{font-weight:700;color:var(--danger);background:var(--danger-bg);padding:5px 12px;border-radius:20px}
 .qnum{color:var(--sub);font-weight:600}
@@ -80,6 +81,8 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .badge.wrong{background:var(--danger-bg);color:var(--danger)}
 .hidden{display:none}
 .warnbox{background:var(--danger-bg);color:var(--danger);border-radius:10px;padding:12px 14px;font-size:.88rem;margin-bottom:14px}
+.btn-group{display:flex;gap:8px;margin-top:12px}
+.btn-group button{flex:1}
 </style>
 </head>
 <body>
@@ -94,7 +97,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <label for="sname">তোমার নাম লেখো</label>
       <input type="text" id="sname" placeholder="যেমন: Md Foysal Uddin">
       <div id="start-err" class="warnbox hidden">অনুগ্রহ করে নাম লেখো।</div>
-      <button id="btn-goto-rules">এগিয়ে যাও</button>
+      <button id="btn-goto-rules" style="width:100%">এগিয়ে যাও</button>
     </div>
   </div>
 
@@ -104,13 +107,13 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <h2>নিয়মাবলী পড়ে নাও</h2>
       <ul class="rules">
         <li>মোট প্রশ্ন ৩০টি, সময় মোট ২৩ মিনিট — সময় শেষ হলে পরীক্ষা অটো সাবমিট হবে।</li>
-        <li>প্রতি ভুল উত্তরে <b>-০.২৫</b> নম্বর কাটা যাবে। উত্তর না দিলে (স্কিপ করলে) নম্বর কাটা যাবে না।</li>
+        <li>প্রতি ভুল উত্তরে <b>-০.২৫</b> নম্বর কাটা যাবে। উত্তর না দিলে নম্বর কাটা যাবে না।</li>
         <li>একটি অপশন সিলেক্ট করলে তা আর পরিবর্তন করা যাবে না (লক হয়ে যাবে)।</li>
         <li>পরীক্ষা চলাকালীন ট্যাব পরিবর্তন করলে বা অ্যাপ মিনিমাইজ করলে পরীক্ষা সাথে সাথে বন্ধ হয়ে যাবে।</li>
         <li>এই পরীক্ষা একবারই দেওয়া যাবে — এই ব্রাউজার থেকে দ্বিতীয়বার দেওয়া যাবে না।</li>
         <li>শেষে তোমার স্কোর এবং কোন প্রশ্নে ভুল হয়েছে তা সঠিক উত্তরসহ দেখানো হবে।</li>
       </ul>
-      <button id="btn-start-exam">আমি বুঝেছি, পরীক্ষা শুরু করো</button>
+      <button id="btn-start-exam" style="width:100%">আমি বুঝেছি, পরীক্ষা শুরু করো</button>
     </div>
   </div>
 
@@ -132,7 +135,13 @@ button:disabled{opacity:.5;cursor:not-allowed}
     <div class="card">
       <div class="qtext" id="qtext"></div>
       <div id="options"></div>
-      <button id="btn-next">পরের প্রশ্ন</button>
+      
+      <!-- ৩টি বাটন: Previous, Submit, Next -->
+      <div class="btn-group">
+        <button id="btn-prev" class="secondary" type="button">আগেরটি</button>
+        <button id="btn-submit" class="danger" type="button">সাবমিট</button>
+        <button id="btn-next" type="button">পরেরটি</button>
+      </div>
     </div>
   </div>
 
@@ -141,7 +150,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
     <div class="card center">
       <h2>পরীক্ষা বন্ধ হয়ে গেছে</h2>
       <p class="sub">তুমি ট্যাব পরিবর্তন করেছিলে বা অ্যাপ মিনিমাইজ করেছিলে, তাই নিয়ম অনুযায়ী পরীক্ষা বন্ধ করে দেওয়া হয়েছে। তোমার এতক্ষণের উত্তর অনুযায়ী ফলাফল দেখানো হচ্ছে।</p>
-      <button id="btn-see-result-stopped">ফলাফল দেখো</button>
+      <button id="btn-see-result-stopped" style="width:100%">ফলাফল দেখো</button>
     </div>
   </div>
 
@@ -153,7 +162,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <div class="score" id="res-score"></div>
       <p class="sub" id="res-detail"></p>
       <div class="creator-badge">Created by: Md Foysal Uddin</div>
-      <button id="btn-share" style="margin-top:8px">ফলাফল পাঠাও / কপি করো</button>
+      <button id="btn-share" style="width:100%; margin-top:8px">ফলাফল পাঠাও / কপি করো</button>
       <p class="sub" id="share-msg" style="margin-top:8px"></p>
     </div>
     <div class="card">
@@ -536,7 +545,7 @@ function updateTimerDisplay(){
 function renderQ(){
   const item=QUESTIONS[idx];
   $("qcounter").textContent="প্রশ্ন "+(idx+1)+"/"+QUESTIONS.length;
-  $("progressbar").style.width=Math.round(((idx)/QUESTIONS.length)*100)+"%";
+  $("progressbar").style.width=Math.round(((idx+1)/QUESTIONS.length)*100)+"%";
   $("qtext").textContent=(idx+1)+". "+item.q;
   const box=$("options"); box.innerHTML="";
   item.o.forEach((opt,i)=>{
@@ -551,9 +560,9 @@ function renderQ(){
     box.appendChild(b);
   });
 
-  // উত্তর না দিলেও পরের প্রশ্নে যাওয়ার সুযোগ (স্কিপ করার সুবিধা)
-  $("btn-next").disabled = false;
-  $("btn-next").textContent = (idx===QUESTIONS.length-1) ? "পরীক্ষা জমা দাও" : (answers[idx]===null ? "এড়িয়ে যাও / পরের প্রশ্ন" : "পরের প্রশ্ন");
+  // Previous & Next 버튼 নিয়ন্ত্রণ
+  $("btn-prev").disabled = (idx === 0);
+  $("btn-next").disabled = (idx === QUESTIONS.length - 1);
 }
 
 function selectOption(i){
@@ -562,13 +571,24 @@ function selectOption(i){
   renderQ();
 }
 
+$("btn-prev").addEventListener("click", ()=>{
+  if(idx > 0){
+    idx--;
+    renderQ();
+  }
+});
+
 $("btn-next").addEventListener("click", ()=>{
-  if(idx===QUESTIONS.length-1){
-    clearInterval(timerId);
-    finishExam(false);
-  } else {
+  if(idx < QUESTIONS.length - 1){
     idx++;
     renderQ();
+  }
+});
+
+$("btn-submit").addEventListener("click", ()=>{
+  if(confirm("তুমি কি নিশ্চিত যে পরীক্ষা এখনই জমা দিতে চাও?")){
+    clearInterval(timerId);
+    finishExam(false);
   }
 });
 
