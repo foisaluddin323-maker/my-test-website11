@@ -3,667 +3,1200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>রক্ত ও সঞ্চালন - পরীক্ষা</title>
+<title>গুণগত রসায়ন — মডেল টেস্ট</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#f4f7f2; --card:#ffffff; --text:#1c2b1e; --sub:#5b6b5d;
-  --accent:#2e7d32; --accent-dark:#1b5e20; --danger:#c62828; --danger-bg:#fdecea;
-  --ok-bg:#e8f5e9; --border:#dfe6dd; --lock:#eceeea;
-  box-sizing:border-box;
+--bg:#f4f6fb;--card:#fff;--text:#1b2333;--sub:#65708a;
+--accent:#2f5bea;--accent-dark:#2145bd;
+--danger:#d93a3a;--danger-bg:#fdecec;
+--ok:#12a150;--ok-bg:#eaf8ef;--border:#dde3f0;--lock:#edf0f6
 }
-:root:not([data-theme="light"]){ }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#12160f; --card:#1b2118; --text:#eef2ea; --sub:#a9b6a6;
-    --accent:#66bb6a; --accent-dark:#43a047; --danger:#ef5350; --danger-bg:#3a1a19;
-    --ok-bg:#173620; --border:#2b332a; --lock:#242b21;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#12160f; --card:#1b2118; --text:#eef2ea; --sub:#a9b6a6;
-  --accent:#66bb6a; --accent-dark:#43a047; --danger:#ef5350; --danger-bg:#3a1a19;
-  --ok-bg:#173620; --border:#2b332a; --lock:#242b21;
-}
+
 *{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+
 body{
-  margin:0;font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--bg);color:var(--text);
-  min-height:100%;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:"Noto Sans Bengali",system-ui,sans-serif;
+min-height:100vh;
 }
-.wrap{max-width:480px;margin:0 auto;padding:18px 16px 40px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px}
-h1{font-size:1.25rem;margin:0 0 4px;color:var(--accent-dark)}
-h2{font-size:1.05rem;margin:0 0 10px}
-.tag{display:inline-block;background:var(--ok-bg);color:var(--accent-dark);font-size:.78rem;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:600}
-.sub{color:var(--sub);font-size:.9rem;margin:0 0 14px}
-.creator-badge{font-size:.85rem;font-weight:600;color:var(--accent);margin-top:4px;margin-bottom:12px}
-label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
-input[type=text]{
-  width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--border);
-  background:var(--bg);color:var(--text);font-family:inherit;font-size:1rem;margin-bottom:14px
+
+.wrap{
+max-width:480px;
+margin:auto;
+padding:18px 16px 40px;
 }
-ul.rules{margin:0 0 16px;padding-left:20px;font-size:.92rem;line-height:1.7}
-ul.rules li{margin-bottom:4px}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:17px;
+padding:20px;
+margin-bottom:14px;
+}
+
+h1{font-size:21px;margin:0 0 5px}
+h2{font-size:17px;margin:0 0 10px}
+
+.sub{
+color:var(--sub);
+font-size:14px;
+line-height:1.55;
+margin:0 0 14px;
+}
+
+.tag{
+display:inline-block;
+background:#eef2ff;
+color:var(--accent);
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+label{
+display:block;
+font-weight:600;
+font-size:14px;
+margin-bottom:6px;
+}
+
+input{
+width:100%;
+padding:12px 14px;
+border:1.5px solid var(--border);
+border-radius:11px;
+background:var(--bg);
+color:var(--text);
+font:inherit;
+margin-bottom:14px;
+outline:none;
+}
+
+input:focus{border-color:var(--accent)}
+
+.rules{
+padding-left:20px;
+line-height:1.7;
+font-size:14px;
+margin:0 0 18px;
+}
+
+.rules li{margin-bottom:5px}
+
 button{
-  padding:12px 14px;border:none;border-radius:12px;background:var(--accent);color:#fff;
-  font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer
+font:inherit;
+cursor:pointer;
 }
-button:active{background:var(--accent-dark)}
-button.secondary{background:var(--lock);color:var(--text)}
-button.danger{background:var(--danger);color:#fff}
-button:disabled{opacity:.4;cursor:not-allowed}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.9rem}
-.timer{font-weight:700;color:var(--danger);background:var(--danger-bg);padding:5px 12px;border-radius:20px}
-.qnum{color:var(--sub);font-weight:600}
-.qtext{font-size:1.05rem;font-weight:600;margin-bottom:16px;line-height:1.5}
-.opt{
-  display:block;width:100%;text-align:left;padding:13px 14px;margin-bottom:10px;border-radius:12px;
-  border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:.97rem;
-  cursor:pointer;line-height:1.4
+
+.main-btn{
+width:100%;
+padding:14px;
+border:0;
+border-radius:12px;
+background:var(--accent);
+color:#fff;
+font-weight:700;
+font-size:16px;
 }
-.opt.selected{border-color:var(--accent);background:var(--ok-bg);font-weight:600}
-.opt.locked{cursor:not-allowed}
-.opt[disabled]{opacity:.85}
-.progress{height:6px;background:var(--lock);border-radius:4px;overflow:hidden;margin-bottom:16px}
-.progress > div{height:100%;background:var(--accent)}
+
+.main-btn:active{
+background:var(--accent-dark);
+}
+
+.main-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+font-size:14px;
+font-weight:600;
+}
+
+.counter{color:var(--sub)}
+
+.timer{
+background:var(--danger-bg);
+color:var(--danger);
+padding:5px 12px;
+border-radius:20px;
+font-weight:700;
+}
+
+.progress{
+height:7px;
+background:var(--lock);
+border-radius:10px;
+overflow:hidden;
+margin-bottom:15px;
+}
+
+.progress div{
+height:100%;
+background:var(--accent);
+transition:.2s;
+}
+
+.qtext{
+font-size:17px;
+font-weight:600;
+line-height:1.55;
+margin-bottom:17px;
+}
+
+.option{
+width:100%;
+display:block;
+text-align:left;
+padding:13px 14px;
+margin-bottom:10px;
+border:1.5px solid var(--border);
+border-radius:12px;
+background:var(--bg);
+color:var(--text);
+font-size:15px;
+line-height:1.45;
+}
+
+.option.selected{
+border-color:var(--accent);
+background:#eef2ff;
+font-weight:600;
+}
+
+.option.locked{
+cursor:not-allowed;
+}
+
 .center{text-align:center}
-.score{font-size:2.4rem;font-weight:800;color:var(--accent-dark);margin:6px 0}
-.reviewq{border-top:1px solid var(--border);padding:14px 0;font-size:.92rem}
-.reviewq .qt{font-weight:600;margin-bottom:8px}
-.ans-row{padding:6px 10px;border-radius:8px;margin-bottom:4px}
-.ans-row.correct{background:var(--ok-bg)}
-.ans-row.wrong{background:var(--danger-bg)}
-.badge{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px}
-.badge.right{background:var(--ok-bg);color:var(--accent-dark)}
-.badge.wrong{background:var(--danger-bg);color:var(--danger)}
-.hidden{display:none}
-.warnbox{background:var(--danger-bg);color:var(--danger);border-radius:10px;padding:12px 14px;font-size:.88rem;margin-bottom:14px}
-.btn-group{display:flex;gap:8px;margin-top:12px}
-.btn-group button{flex:1}
+
+.score{
+font-size:40px;
+font-weight:800;
+color:var(--accent);
+margin:5px 0;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin:16px 0;
+}
+
+.result-box{
+background:var(--bg);
+border-radius:11px;
+padding:9px 4px;
+text-align:center;
+}
+
+.result-box b{
+display:block;
+font-size:20px;
+}
+
+.result-box span{
+font-size:12px;
+color:var(--sub);
+}
+
+.review{
+border-top:1px solid var(--border);
+padding:14px 0;
+font-size:14px;
+}
+
+.review:first-child{border-top:0}
+
+.review-q{
+font-weight:600;
+line-height:1.5;
+margin-bottom:8px;
+}
+
+.answer{
+padding:7px 10px;
+border-radius:8px;
+margin-bottom:5px;
+line-height:1.45;
+}
+
+.correct{
+background:var(--ok-bg);
+color:var(--ok);
+}
+
+.wrong{
+background:var(--danger-bg);
+color:var(--danger);
+}
+
+.badge{
+font-size:11px;
+font-weight:700;
+margin-right:5px;
+}
+
+.warn{
+background:var(--danger-bg);
+color:var(--danger);
+padding:12px;
+border-radius:10px;
+font-size:13px;
+margin-bottom:14px;
+}
+
+.share-msg{
+min-height:20px;
+}
+
+.hidden{display:none!important}
+
+@media(prefers-color-scheme:dark){
+:root{
+--bg:#10141f;
+--card:#1a2032;
+--text:#eef1f8;
+--sub:#98a3bd;
+--border:#2b3452;
+--lock:#252c40;
+}
+.tag{
+background:#20294a;
+}
+.option.selected{
+background:#20294a;
+}
+}
 </style>
 </head>
+
 <body>
+
 <div class="wrap">
 
-  <!-- SCREEN: START -->
-  <div id="screen-start">
-    <div class="card">
-      <span class="tag">জীববিজ্ঞান</span>
-      <h1>রক্ত ও সঞ্চালন</h1>
-      <p class="sub">বিশ্ববিদ্যালয় ভর্তি পরীক্ষার প্রশ্ন | ৩০টি প্রশ্ন | সময়: ২৩ মিনিট</p>
-      <label for="sname">তোমার নাম লেখো</label>
-      <input type="text" id="sname" placeholder="যেমন: Md Foysal Uddin">
-      <div id="start-err" class="warnbox hidden">অনুগ্রহ করে নাম লেখো।</div>
-      <button id="btn-goto-rules" style="width:100%">এগিয়ে যাও</button>
-    </div>
-  </div>
+<!-- START -->
+<div id="screen-start">
 
-  <!-- SCREEN: RULES -->
-  <div id="screen-rules" class="hidden">
-    <div class="card">
-      <h2>নিয়মাবলী পড়ে নাও</h2>
-      <ul class="rules">
-        <li>মোট প্রশ্ন ৩০টি, সময় মোট ২৩ মিনিট — সময় শেষ হলে পরীক্ষা অটো সাবমিট হবে।</li>
-        <li>প্রতি ভুল উত্তরে <b>-০.২৫</b> নম্বর কাটা যাবে। উত্তর না দিলে নম্বর কাটা যাবে না।</li>
-        <li>একটি অপশন সিলেক্ট করলে তা আর পরিবর্তন করা যাবে না (লক হয়ে যাবে)।</li>
-        <li>পরীক্ষা চলাকালীন ট্যাব পরিবর্তন করলে বা অ্যাপ মিনিমাইজ করলে পরীক্ষা সাথে সাথে বন্ধ হয়ে যাবে।</li>
-        <li>এই পরীক্ষা একবারই দেওয়া যাবে — এই ব্রাউজার থেকে দ্বিতীয়বার দেওয়া যাবে না।</li>
-        <li>শেষে তোমার স্কোর এবং কোন প্রশ্নে ভুল হয়েছে তা সঠিক উত্তরসহ দেখানো হবে।</li>
-      </ul>
-      <button id="btn-start-exam" style="width:100%">আমি বুঝেছি, পরীক্ষা শুরু করো</button>
-    </div>
-  </div>
+<div class="card">
 
-  <!-- SCREEN: ALREADY DONE -->
-  <div id="screen-blocked" class="hidden">
-    <div class="card center">
-      <h2>এই পরীক্ষা ইতিমধ্যে দেওয়া হয়েছে</h2>
-      <p class="sub">এই ব্রাউজার থেকে একবার পরীক্ষা দেওয়া হয়ে গেছে। দ্বিতীয়বার দেওয়া যাবে না।</p>
-    </div>
-  </div>
+<span class="tag">রসায়ন ১ম পত্র • অধ্যায় ২</span>
 
-  <!-- SCREEN: EXAM -->
-  <div id="screen-exam" class="hidden">
-    <div class="topbar">
-      <span class="qnum" id="qcounter">প্রশ্ন ১/৩০</span>
-      <span class="timer" id="timer">২৩:০০</span>
-    </div>
-    <div class="progress"><div id="progressbar" style="width:5%"></div></div>
-    <div class="card">
-      <div class="qtext" id="qtext"></div>
-      <div id="options"></div>
-      
-      <!-- ৩টি বাটন: Previous, Submit, Next -->
-      <div class="btn-group">
-        <button id="btn-prev" class="secondary" type="button">আগেরটি</button>
-        <button id="btn-submit" class="danger" type="button">সাবমিট</button>
-        <button id="btn-next" type="button">পরেরটি</button>
-      </div>
-    </div>
-  </div>
+<h1>গুণগত রসায়ন — মডেল টেস্ট</h1>
 
-  <!-- SCREEN: STOPPED (tab switch) -->
-  <div id="screen-stopped" class="hidden">
-    <div class="card center">
-      <h2>পরীক্ষা বন্ধ হয়ে গেছে</h2>
-      <p class="sub">তুমি ট্যাব পরিবর্তন করেছিলে বা অ্যাপ মিনিমাইজ করেছিলে, তাই নিয়ম অনুযায়ী পরীক্ষা বন্ধ করে দেওয়া হয়েছে। তোমার এতক্ষণের উত্তর অনুযায়ী ফলাফল দেখানো হচ্ছে।</p>
-      <button id="btn-see-result-stopped" style="width:100%">ফলাফল দেখো</button>
-    </div>
-  </div>
+<p class="sub">
+বিশ্ববিদ্যালয় ভর্তি পরীক্ষার প্রস্তুতি<br>
+৩০টি প্রশ্ন • সময় ৩০ মিনিট • Negative Marking −০.২৫
+</p>
 
-  <!-- SCREEN: RESULT -->
-  <div id="screen-result" class="hidden">
-    <div class="card center">
-      <h2 id="res-name"></h2>
-      <p class="sub">রক্ত ও সঞ্চালন</p>
-      <div class="score" id="res-score"></div>
-      <p class="sub" id="res-detail"></p>
-      <div class="creator-badge">Created by: Md Foysal Uddin</div>
-      <button id="btn-share" style="width:100%; margin-top:8px">ফলাফল পাঠাও / কপি করো</button>
-      <p class="sub" id="share-msg" style="margin-top:8px"></p>
-    </div>
-    <div class="card">
-      <h2>বিস্তারিত ফলাফল</h2>
-      <div id="review"></div>
-    </div>
-  </div>
+<label for="studentName">তোমার নাম লেখো</label>
+
+<input
+id="studentName"
+type="text"
+maxlength="50"
+placeholder="যেমন: Md Foysal Uddin"
+autocomplete="name"
+>
+
+<div id="nameError" class="warn hidden">
+অনুগ্রহ করে নাম লেখো।
+</div>
+
+<button id="goRules" class="main-btn">
+এগিয়ে যাও
+</button>
 
 </div>
 
+</div>
+
+
+<!-- RULES -->
+<div id="screen-rules" class="hidden">
+
+<div class="card">
+
+<h2>নিয়মাবলী পড়ে নাও</h2>
+
+<ul class="rules">
+
+<li>মোট প্রশ্ন ৩০টি, সময় ৩০ মিনিট।</li>
+
+<li>প্রতি সঠিক উত্তরে ১ নম্বর।</li>
+
+<li>প্রতি ভুল উত্তরে −০.২৫ নম্বর কাটা যাবে।</li>
+
+<li>একটি অপশন নির্বাচন করলে সেটি আর পরিবর্তন করা যাবে না।</li>
+
+<li>সময় শেষ হলে পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হবে।</li>
+
+<li>পরীক্ষার সময় পেজ/অ্যাপ থেকে বের হলে পরীক্ষা বন্ধ হয়ে যাবে।</li>
+
+<li>এই ব্রাউজার থেকে পরীক্ষা একবারই দেওয়া যাবে।</li>
+
+<li>শেষে স্কোর, সঠিক, ভুল ও অনুত্তরিত প্রশ্ন দেখা যাবে।</li>
+
+</ul>
+
+<button id="startExam" class="main-btn">
+আমি বুঝেছি, পরীক্ষা শুরু করো
+</button>
+
+</div>
+
+</div>
+
+
+<!-- BLOCKED -->
+<div id="screen-blocked" class="hidden">
+
+<div class="card center">
+
+<h2>এই পরীক্ষা ইতিমধ্যে দেওয়া হয়েছে</h2>
+
+<p class="sub">
+এই ব্রাউজার থেকে একবার পরীক্ষা দেওয়া হয়ে গেছে।
+দ্বিতীয়বার দেওয়া যাবে না।
+</p>
+
+</div>
+
+</div>
+
+
+<!-- EXAM -->
+<div id="screen-exam" class="hidden">
+
+<div class="topbar">
+
+<span id="counter" class="counter">
+প্রশ্ন ১/৩০
+</span>
+
+<span id="timer" class="timer">
+৩০:০০
+</span>
+
+</div>
+
+<div class="progress">
+<div id="progress"></div>
+</div>
+
+<div class="card">
+
+<div id="question" class="qtext"></div>
+
+<div id="options"></div>
+
+<button id="nextBtn" class="main-btn" disabled>
+পরের প্রশ্ন
+</button>
+
+</div>
+
+</div>
+
+
+<!-- STOPPED -->
+<div id="screen-stopped" class="hidden">
+
+<div class="card center">
+
+<h2>পরীক্ষা বন্ধ হয়ে গেছে</h2>
+
+<p class="sub">
+পরীক্ষা চলাকালীন পেজ বা অ্যাপ থেকে বের হওয়ার কারণে
+পরীক্ষা বন্ধ করা হয়েছে। তোমার দেওয়া উত্তর অনুযায়ী
+ফলাফল তৈরি করা হয়েছে।
+</p>
+
+<button id="stoppedResult" class="main-btn">
+ফলাফল দেখো
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+<div id="screen-result" class="hidden">
+
+<div class="card center">
+
+<span class="tag">পরীক্ষা সম্পন্ন</span>
+
+<h2 id="resultName"></h2>
+
+<p class="sub">
+গুণগত রসায়ন — মডেল টেস্ট
+</p>
+
+<div id="score" class="score">
+0.00 / 30
+</div>
+
+<div class="result-grid">
+
+<div class="result-box">
+<b id="correctCount">0</b>
+<span>সঠিক</span>
+</div>
+
+<div class="result-box">
+<b id="wrongCount">0</b>
+<span>ভুল</span>
+</div>
+
+<div class="result-box">
+<b id="skipCount">0</b>
+<span>অনুত্তরিত</span>
+</div>
+
+</div>
+
+<p id="resultDetail" class="sub"></p>
+
+<button id="shareBtn" class="main-btn">
+ফলাফল পাঠাও / কপি করো
+</button>
+
+<p id="shareMsg" class="sub share-msg"></p>
+
+</div>
+
+
+<div class="card">
+
+<h2>বিস্তারিত ফলাফল</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
+
+/* =========================
+QUESTIONS
+========================= */
+
 const QUESTIONS_RAW = [
-{
-"q": "রক্তরসে পানির পরিমাণ কত?",
-"o": [
-"40-50%",
-"55-65%",
-"70-80%",
-"90-92%"
-],
-"a": 3
-},
-{
-"q": "মানুষের রক্তে লোহিত রক্তকণিকা (RBC) ও শ্বেত রক্তকণিকার (WBC) অনুপাত কত?",
-"o": [
-"500:1",
-"600:1",
-"700:1",
-"800:1"
-],
-"a": 1
-},
-{
-"q": "কোন অঙ্গকে লোহিত রক্তকণিকার ‘কবরস্থান’ (Graveyard of RBC) বলা হয়?",
-"o": [
-"যকৃৎ",
-"প্লীহা",
-"বৃক্ক",
-"ফুসফুস"
-],
-"a": 1
-},
-{
-"q": "রক্তজমাট বাঁধায় (Blood Clotting) কোন ধাতব আয়ন সরাসরি অংশগ্রহণ করে?",
-"o": [
-"Na+",
-"K+",
-"Ca2+",
-"Fe2+"
-],
-"a": 2
-},
-{
-"q": "হেপারিন (Heparin) ক্ষরণ করে রক্তনালীর ভেতরে রক্ত জমাট বাঁধতে বাধা দেয় কোন শ্বেত রক্তকণিকা?",
-"o": [
-"নিউট্রোফিল",
-"বেসোফিল",
-"ইওসিনোফিল",
-"লিম্ফোসাইট"
-],
-"a": 1
-},
-{
-"q": "হৃৎপিণ্ডের কোন অংশকে 'প্রাকৃতিক পেসমেকার' (Natural Pacemaker) বলা হয়?",
-"o": [
-"AV node",
-"SA node",
-"Bundle of His",
-"Purkinje fibers"
-],
-"a": 1
-},
-{
-"q": "অ্যালার্জি প্রতিরোধে এবং হিস্টামিন নিঃসরণে প্রধান ভূমিকা পালন করে কোন রক্তকণিকা?",
-"o": [
-"নিউট্রোফিল",
-"ইওসিনোফিল",
-"মোনোসাইট",
-"অণুচক্রিকা"
-],
-"a": 1
-},
-{
-"q": "মানুষের রক্ত সংবহনতন্ত্রে প্লাটিলেট (Platelet)-এর প্রধান কাজ কোনটি?",
-"o": [
-"অক্সিজেন পরিবহন",
-"ফ্যাগোসাইটোসিস",
-"রক্ত তঞ্চন (Blood Clotting)",
-"অ্যান্টিবডি তৈরি"
-],
-"a": 2
-},
-{
-"q": "কোন রক্তনালী হৃৎপিণ্ডের পেশিতে (Myocardium) রক্ত সরবরাহ করে?",
-"o": [
-"পালমোনারি ধমনী",
-"রেনাল ধমনী",
-"করোনারি ধমনী",
-"ক্যারোটিড ধমনী"
-],
-"a": 2
-},
-{
-"q": "মানবদেহে একটি পূর্ণাঙ্গ কার্ডিয়াক চক্রের (Cardiac Cycle) সময়কাল কত সেকেন্ড?",
-"o": [
-"০.৫ সে.",
-"০.৬ সে.",
-"০.৮ সে.",
-"১.০ সে."
-],
-"a": 2
-},
-{
-"q": "অ্যান্টিবডি (Antibody) উৎপন্ন করে অনাক্রম্যতা (Immunity) দান করে কোন কোষ?",
-"o": [
-"B-লিম্ফোসাইট",
-"T-লিম্ফোসাইট",
-"নিউট্রোফিল",
-"এরিথ্রোসাইট"
-],
-"a": 0
-},
-{
-"q": "ফ্যাগোসাইটোসিস প্রক্রিয়ায় জীবাণু ধ্বংস করে কোন শ্বেত রক্তকণিকা জোড়?",
-"o": [
-"নিউট্রোফিল ও মোনোসাইট",
-"ইওসিনোফিল ও বেসোফিল",
-"লিম্ফোসাইট ও অণুচক্রিকা",
-"বেসোফিল ও নিউট্রোফিল"
-],
-"a": 0
-},
-{
-"q": "ক্লটিং ফ্যাক্টর VIII (Factor VIII)-এর অভাবে কোন বংশগত রক্তক্ষরণজনিত রোগ হয়?",
-"o": [
-"থ্যালাসেমিয়া",
-"ক্লাসিক হিমোফিলিয়া-A",
-"ক্রিসমাস ডিজিজ",
-"সিকেল সেল অ্যানিমিয়া"
-],
-"a": 1
-},
-{
-"q": "হৃৎপিণ্ডের ডান অলিন্দ ও ডান নিলয়ের মধ্যবর্তী ছিদ্রে কোন কপাটিকা (Valve) থাকে?",
-"o": [
-"ট্রাইকাসপিড",
-"বাইকাসপিড/মিট্রাল",
-"সেমিলুনার",
-"ইউস্টেচিয়ান"
-],
-"a": 0
-},
-{
-"q": "ফুসফুস থেকে অক্সিজেনযুক্ত রক্ত হৃৎপিণ্ডের কোন প্রকোষ্ঠে প্রবেশ করে?",
-"o": [
-"ডান অলিন্দ",
-"বাম অলিন্দ",
-"ডান নিলয়",
-"বাম নিলয়"
-],
-"a": 1
-},
-{
-"q": "মানবদেহের স্বাভাবিক রক্তের pH কত?",
-"o": [
-"৬.৩৫ - ৬.৪৫",
-"৭.৩৫ - ৭.৪৫",
-"৭.৭৫ - ৭.৮৫",
-"৮.০ - ৮.৫"
-],
-"a": 1
-},
-{
-"q": "হৃৎপিণ্ডের পেশির হঠাৎ রক্তের তীব্র অভাবজনিত বুকব্যথাকে কী বলা হয়?",
-"o": [
-"হার্ট অ্যাটাক",
-"অ্যানজাইনা (Angina Pectoris)",
-"কার্ডিয়াক অ্যারেস্ট",
-"আর্টেরিওস্ক্লেরোসিস"
-],
-"a": 1
-},
-{
-"q": "মানুষের রক্তে প্রধান বাফার সিস্টেম কোনটি যা pH নিয়ন্ত্রণ করে?",
-"o": [
-"বাইকার্বোনেট বাফার",
-"অ্যাসিটেট বাফার",
-"সাইট্রেট বাফার",
-"নাইট্রেট বাফার"
-],
-"a": 0
-},
-{
-"q": "করোনারি ধমনীতে ব্লক সরিয়ে রক্তপ্রবাহ স্বাভাবিক করতে স্টেন্ট বসানোকে কী বলে?",
-"o": [
-"বাইপাস সার্জারি",
-"করোনারি স্টেনটিং",
-"পেসমেকার ইমপ্লান্ট",
-"ওপেন হার্ট সার্জারি"
-],
-"a": 1
-},
-{
-"q": "যে বিশেষ সংবহনের মাধ্যমে পরিপাকনালী থেকে শোষিত খাদ্য যকৃতে পৌঁছায় তাকে কী বলে?",
-"o": [
-"সিস্টেমিক সংবহন",
-"পালমোনারি সংবহন",
-"হেপাটিক পোর্টাল সংবহন",
-"করোনারি সংবহন"
-],
-"a": 2
-},
-{
-"q": "ভ্রূণ অবস্থায় লোহিত রক্তকণিকা (RBC) প্রধানত কোথায় উৎপন্ন হয়?",
-"o": [
-"লাল অস্থিমজ্জা",
-"যকৃৎ ও প্লীহা",
-"থাইমাস",
-"বৃক্ক"
-],
-"a": 1
-},
-{
-"q": "কোন প্লাজমা প্রোটিন রক্তরসের অভিস্রবণিক চাপ (Osmotic Pressure) নিয়ন্ত্রণে প্রধান কাজ করে?",
-"o": [
-"অ্যালবুমিন",
-"গ্লোবিউলিন",
-"ফাইব্রিনোজেন",
-"প্রোথ্রম্বিন"
-],
-"a": 0
-},
-{
-"q": "রক্তচাপ মাপার যন্ত্রের নাম কী?",
-"o": [
-"গ্লুকোমিটার",
-"স্ফিগমোম্যানোমিটার",
-"স্ট্রেথোস্কোপ",
-"স্পাইরোমিটার"
-],
-"a": 1
-},
-{
-"q": "হৃৎপিণ্ডের চারপাশের প্রতিরক্ষামূলক দ্বি-স্তরী আবরণের নাম কী?",
-"o": [
-"প্লুরা",
-"পেরিকার্ডিয়াম",
-"পেরিটোনিয়াম",
-"পেরিঅস্টিয়াম"
-],
-"a": 1
-},
-{
-"q": "রক্তরসে ফাইব্রিনোজেন বাদ দিলে অবশিষ্ট খড় রঙের তরল অংশকে কী বলে?",
-"o": [
-"প্লাজমা",
-"লিম্ফ",
-"সিরাম (Serum)",
-"সাইনোভিয়াল তরল"
-],
-"a": 2
-},
-{
-"q": "কোন হরমোন লোহিত রক্তকণিকা উৎপাদনে (Erythropoiesis) উদ্দীপনা জোগায়?",
-"o": [
-"থাইরক্সিন",
-"ইরিথ্রোপয়েটিন",
-"ইনসুলিন",
-"অ্যাড্রেনালিন"
-],
-"a": 1
-},
-{
-"q": "হৃদচক্রের কোন পর্যায়ে বাম নিলয় থেকে O2 সমৃদ্ধ রক্ত মহাধমনীতে প্রবেশ করে?",
-"o": [
-"অলিন্দের সিস্টোল",
-"অলিন্দের ডায়াস্টোল",
-"নিলয়ের সিস্টোল",
-"নিলয়ের ডায়াস্টোল"
-],
-"a": 2
-},
-{
-"q": "রক্তে অণুচক্রিকার (Platelet) সংখ্যা স্বাভাবিকের চেয়ে কমে যাওয়াকে কী বলে?",
-"o": [
-"লিউকোমিয়া",
-"থ্রম্বোসাইটোপেনিয়া",
-"অ্যানিমিয়া",
-"পলিসাইথেমিয়া"
-],
-"a": 1
-},
-{
-"q": "হৃৎপিণ্ডের পেশির মাঝের পুরু ও শক্তিশালী সংকোচনশীল স্তর কোনটি?",
-"o": [
-"এপিকার্ডিয়াম",
-"মায়োকার্ডিয়াম",
-"এন্ডোকার্ডিয়াম",
-"পেরিকার্ডিয়াম"
-],
-"a": 1
-},
-{
-"q": "লসিকাতন্ত্রে অবস্থিত দুধের মতো সাদা ফ্যাট সমৃদ্ধ লসিকাকে কী বলা হয়?",
-"o": [
-"কাইল (Chyle)",
-"সিরাম",
-"প্লাজমা",
-"ল্যাকটিয়াল"
-],
-"a": 0
-}
+{"topic":"কোয়ান্টাম সংখ্যা","q":"Sc (Z=21) মৌলের 3d¹ ইলেকট্রনটির চারটির কোয়ান্টাম সংখ্যার সম্ভাব্য সেট কোনটি?","o":["(3, 2, 0, +1/2)","(3, 1, 0, +1/2)","(3, 1, 0, -1/2)","(3, 0, 0, +1/2)"],"a":0},
+
+{"topic":"অর্বিটাল বিন্যাস","q":"d-অর্বিটালগুলোর মধ্যে কোনগুলো অক্ষ বরাবর (along the axes) অবস্থিত?","o":["dx²-y², dz²","dxy, dz²","dyz, dx²-y²","dxy, dxz"],"a":0},
+
+{"topic":"দ্রাব্যতা গুণফল","q":"Al(OH)₃ এর দ্রাব্যতা s mol/L হলে এর দ্রাব্যতা গুণফল (Ksp) কত?","o":["27s⁴","3s⁴","4s³","108s⁵"],"a":0},
+
+{"topic":"সম-আয়ন প্রভাব","q":"নিচের কোন জোড়া যৌগে সম-আয়ন প্রভাব (Common Ion Effect) বিদ্যমান?","o":["CH₄, HCl","NaCl, CH₃Cl","H₂S, HCl","CaCl₂, C₆H₅Cl"],"a":2},
+
+{"topic":"আয়ন শনাক্তকরণ","q":"NH₄⁺ (অ্যামোনিয়াম) আয়ন শনাক্তকরণে ব্যবহৃত নেস্লার বিকারক কোনটি?","o":["NaOH, K₂[HgI₄]","K₄[Fe(CN)₆]","(NH₄)₂C₂O₄","BaCl₂"],"a":0},
+
+{"topic":"হাইড্রোজেন বর্ণালী","q":"RH রিডবার্গ ধ্রুবক হলে, হাইড্রোজেন বর্ণালীর বামার (Balmer) সিরিজের ২য় লাইনের তরঙ্গদৈর্ঘ্য (λ) কত?","o":["36 / (5 RH)","16 / (3 RH)","3 RH / 16","5 / (3 RH)"],"a":1},
+
+{"topic":"অর্বিটাল নিয়ম","q":"নিচের কোন উপস্তরটি (subshell) বাস্তবে গঠন করা সম্ভব নয়?","o":["2d","3p","4f","1s"],"a":0},
+
+{"topic":"ইলেকট্রন বিন্যাস","q":"১ম ট্রানজিশন ধাতুর M³⁺ আয়নে ৫টি ইলেকট্রন 3d সাবশেলে অবস্থিত (3d⁵)। নিরপেক্ষ M পরমাণুটির ইলেকট্রন বিন্যাস কোনটি?","o":["[Ar] 3d⁵ 4s¹","[Ar] 3d⁶ 4s²","[Ar] 3d⁵ 4s²","[Ar] 3d⁴ 4s²"],"a":1},
+
+{"topic":"নিউক্লিয়ার বিয়োজন","q":"²³⁴₉₀Th ➝ ²³⁴₉₁Pa + X বিক্রিয়ায় নির্গত X কণা কোনটি?","o":["α-emission","β-emission","γ-emission","neutron-emission"],"a":1},
+
+{"topic":"আইসোটোন","q":"¹⁴₆C এবং ¹⁶₈O পরস্পরের কী?","o":["আইসোমার","আইসোটোন","আইসোবার","আইসোটোপ"],"a":1},
+
+{"topic":"বোর পরমাণু মডেল","q":"বোর মডেল অনুযায়ী ৫ম শক্তিস্তরের একটি ইলেকট্রনের কৌণিক ভরবেগ (Angular Momentum) কত?","o":["2.5h / π","5h / π","h / π","25h / π"],"a":0},
+
+{"topic":"দ্রাব্যতা ও pH","q":"25°C তাপমাত্রায় M(OH)₂ এর Ksp = 5 × 10⁻¹⁶ হলে এর সম্পৃক্ত দ্রবণের pH কত?","o":["3","5","7","9"],"a":3},
+
+{"topic":"শিখা পরীক্ষা","q":"নিচের কোন ক্যাটায়নটি শিখা পরীক্ষায় কোনো বর্ণ দেখায় না?","o":["K⁺","Ca²⁺","Cu²⁺","Mg²⁺"],"a":3},
+
+{"topic":"আইসোইলেকট্রনিক","q":"নিচের কোনটি Cl⁻ (ক্লোরাইড আয়ন) এর সাথে আইসোইলেকট্রনিক?","o":["S²⁻","P³⁻","K⁺","সবকটি"],"a":3},
+
+{"topic":"মৌলিক বর্ণালী ও MRI","q":"MRI (Magnetic Resonance Imaging) প্রযুক্তিতে মানবদেহের রোগ নির্ণয়ে কোন ধরনের প্রযুক্তি কাজ করে?","o":["UV","IR","NMR","Raman"],"a":2},
+
+{"topic":"কোয়ান্টাম সংখ্যা","q":"n = 4, l = 3 উপস্তরে মোট অর্বিটাল সংখ্যা ও সর্বোচ্চ ইলেকট্রন ধারণক্ষমতা কত?","o":["৭টি অর্বিটাল, ১৪টি ইলেকট্রন","৫টি অর্বিটাল, ১০টি ইলেকট্রন","৩টি অর্বিটাল, ৬টি ইলেকট্রন","১টি অর্বিটাল, ২টি ইলেকট্রন"],"a":0},
+
+{"topic":"পদার্থের দ্বৈতরূপ","q":"গতিশীল কণার তরঙ্গদৈর্ঘ্য ও ভরবেগের সম্পর্ক প্রকাশক দে ব্রগলি সমীকরণ কোনটি?","o":["λ = h / (mv)","E = mc²","E = hν","mvr = nh / (2π)"],"a":0},
+
+{"topic":"অযুগ্ম ইলেকট্রন","q":"ভূমি অবস্থায় নিচের কোন ক্যাটায়নটিতে সর্বাধিক অযুগ্ম (Unpaired) ইলেকট্রন থাকে?","o":["Mn²⁺","Fe²⁺","Cr³⁺","Co²⁺"],"a":0},
+
+{"topic":"আয়ন শনাক্তকরণ","q":"Fe³⁺ আয়ন শনাক্তকরণে KSCN দ্রবণ যোগ করলে কী রঙের দ্রবণ পাওয়া যায়?","o":["রক্ত লাল (Blood Red)","গাঢ় নীল","বাদামী","সবুজ"],"a":0},
+
+{"topic":"নোড গণনা","q":"3p অর্বিটালে গোলকীয় বা র্যাডিয়াল নোড (Radial Node) কয়টি?","o":["১ টি","২ টি","৩ টি","০ টি"],"a":0},
+
+{"topic":"UV রশ্মি ব্যবহার","q":"পাসপোর্ট ও জাল টাকা শনাক্তকরণে ব্যবহৃত UV রশ্মির তরঙ্গদৈর্ঘ্য সীমা কত?","o":["230 - 375 nm","100 - 200 nm","400 - 700 nm","700 - 900 nm"],"a":0},
+
+{"topic":"আইসোইলেকট্রনিক","q":"CO, CN⁻, N₂ অণু/আয়নসমূহ পরস্পরের কী?","o":["আইসোইলেকট্রনিক","আইসোটোপ","আইসোবার","আইসোটোন"],"a":0},
+
+{"topic":"আইসোটোপ ব্যবহার","q":"গলগণ্ড বা থাইরয়েড রোগ নির্ণয় ও চিকিৎসায় কোন আইসোটোপ ব্যবহৃত হয়?","o":["¹³¹₅₃I","⁶⁰₂₇Co","³²₁₅P","²⁴₁₁Na"],"a":0},
+
+{"topic":"তড়িৎ-চৌম্বকীয় বর্ণালী","q":"কোন বিকিরণের ক্ষেত্রে ফোটনের শক্তি সবচেয়ে বেশি?","o":["Gamma ray (γ-রে)","Ultraviolet (UV)","Visible (দৃশ্যমান)","Infrared (IR)"],"a":0},
+
+{"topic":"হাইড্রোজেন বর্ণালী","q":"ইলেকট্রন উচ্চ শক্তিস্তর থেকে ৩য় শক্তিস্তরে (n₁ = 3) নেমে আসলে কোন সিরিজ তৈরি হয়?","o":["পাসচেন (Paschen) সিরিজ","লাইমেন (Lyman) সিরিজ","বামার (Balmer) সিরিজ","ব্র্যাকেট (Brackett) সিরিজ"],"a":0},
+
+{"topic":"আয়ন শনাক্তকরণ","q":"Ca²⁺ আয়ন শনাক্তকরণে (NH₄)₂C₂O₄ যোগ করলে কিসের সাদা অধঃক্ষেপ পড়ে?","o":["CaC₂O₄","CaCO₃","CaSO₄","CaCl₂"],"a":0},
+
+{"topic":"জটিল আয়ন ও বর্ণ","q":"Cu²⁺ দ্রবণে অতিরিক্ত NH₄OH দ্রবণ যোগ করলে কী বর্ণ সৃষ্টি হয়?","o":["গাঢ় নীল (Deep Blue)","বাদামী","হালকা সবুজ","বর্ণহীন"],"a":0},
+
+{"topic":"পলির বর্জন নীতি","q":"একটি পরমাণুর K শেলে (1s) অবস্থানরত ২টি ইলেকট্রনের জন্য কোনটি পৃথক বা ভিন্ন হয়?","o":["স্পিন কোয়ান্টাম সংখ্যা (s)","প্রধান কোয়ান্টাম সংখ্যা (n)","সহকারী কোয়ান্টাম সংখ্যা (l)","চৌম্বকীয় কোয়ান্টাম সংখ্যা (m)"],"a":0},
+
+{"topic":"আলফা কণা বিচ্ছুরণ","q":"রাদারফোর্ডের আলফা কণা বিচ্ছুরণ পরীক্ষায় জিংক সালফাইড (ZnS) পর্দার কাজ কী?","o":["α-কণার অবস্থান ও বিচ্যুতি অনুধাবন করা","ধনাত্মক ক্ষেত্র তৈরি করা","ঋণাত্মক ক্ষেত্র তৈরি করা","α-কণার গতি বাড়ানো"],"a":0},
+
+{"topic":"হেনরির সূত্র","q":"স্থির তাপমাত্রায় তরলে গ্যাসের দ্রাব্যতা সংক্রান্ত হেনরির সূত্রের গাণিতিক রূপ কোনটি?","o":["S = k · P","S = k / P","P = k · S²","S = k + P"],"a":0}
 ];
 
-function shuffle(arr){
-  const a=arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
 
-let QUESTIONS = shuffle(QUESTIONS_RAW).map(item=>{
-  const order = shuffle([0,1,2,3]);
-  const newOptions = order.map(i=>item.o[i]);
-  const newAnswer = order.indexOf(item.a);
-  return {q:item.q, o:newOptions, a:newAnswer};
-});
+/* =========================
+SETTINGS
+========================= */
 
-const TOTAL_TIME = 23 * 60; // ২৩ মিনিট = ১৩৮০ সেকেন্ড
-const NEG = 0.25;
-const LOCK_KEY = "biology_blood_circulation_exam_done_v1";
+const TOTAL_TIME=30*60;
+const NEG=0.25;
+const LOCK_KEY="chemistry_qualitative_test_v1";
 
-let idx=0, answers=new Array(QUESTIONS.length).fill(null), timeLeft=TOTAL_TIME, timerId=null, studentName="", finished=false;
+let QUESTIONS=[];
+let answers=[];
+let index=0;
+let timeLeft=TOTAL_TIME;
+let timerId=null;
+let studentName="";
+let finished=false;
 
 const $=id=>document.getElementById(id);
-function show(id){
-  ["screen-start","screen-rules","screen-blocked","screen-exam","screen-stopped","screen-result"].forEach(s=>$(s).classList.add("hidden"));
-  $(id).classList.remove("hidden");
+
+function shuffle(arr){
+const a=arr.slice();
+
+for(let i=a.length-1;i>0;i--){
+const j=Math.floor(Math.random()*(i+1));
+[a[i],a[j]]=[a[j],a[i]];
 }
+
+return a;
+}
+
+
+/* =========================
+SCREEN
+========================= */
+
+function show(id){
+
+[
+"screen-start",
+"screen-rules",
+"screen-blocked",
+"screen-exam",
+"screen-stopped",
+"screen-result"
+].forEach(x=>$(x).classList.add("hidden"));
+
+$(id).classList.remove("hidden");
+}
+
+
+/* =========================
+LOCK
+========================= */
 
 function alreadyDone(){
-  try{ return localStorage.getItem(LOCK_KEY)==="1"; }catch(e){ return false; }
+
+try{
+return localStorage.getItem(LOCK_KEY)==="1";
+}catch(e){
+return false;
 }
+
+}
+
 function markDone(){
-  try{ localStorage.setItem(LOCK_KEY,"1"); }catch(e){}
+
+try{
+localStorage.setItem(LOCK_KEY,"1");
+}catch(e){}
+
 }
 
-window.addEventListener("load", ()=>{
-  if(alreadyDone()){ show("screen-blocked"); return; }
-  show("screen-start");
+
+/* =========================
+LOAD
+========================= */
+
+window.addEventListener("load",()=>{
+
+if(alreadyDone()){
+show("screen-blocked");
+}else{
+show("screen-start");
+}
+
 });
 
-$("btn-goto-rules").addEventListener("click", ()=>{
-  const v=$("sname").value.trim();
-  if(!v){ $("start-err").classList.remove("hidden"); return; }
-  studentName=v; $("start-err").classList.add("hidden");
-  show("screen-rules");
-});
 
-$("btn-start-exam").addEventListener("click", ()=>{
-  show("screen-exam");
-  renderQ();
-  startTimer();
-});
+/* =========================
+NAME
+========================= */
+
+$("goRules").onclick=()=>{
+
+const name=$("studentName").value.trim();
+
+if(!name){
+
+$("nameError").classList.remove("hidden");
+
+$("studentName").focus();
+
+return;
+}
+
+studentName=name;
+
+$("nameError").classList.add("hidden");
+
+show("screen-rules");
+
+};
+
+
+/* =========================
+START
+========================= */
+
+$("startExam").onclick=()=>{
+
+/*
+Question order random
+Option order random
+Correct answer remapped
+*/
+
+QUESTIONS=shuffle(
+QUESTIONS_RAW.map(item=>{
+
+const order=shuffle([0,1,2,3]);
+
+const options=order.map(i=>item.o[i]);
+
+const answer=order.indexOf(item.a);
+
+return{
+topic:item.topic,
+q:item.q,
+o:options,
+a:answer
+};
+
+})
+);
+
+answers=new Array(QUESTIONS.length).fill(null);
+
+index=0;
+
+timeLeft=TOTAL_TIME;
+
+finished=false;
+
+show("screen-exam");
+
+renderQuestion();
+
+startTimer();
+
+};
+
+
+/* =========================
+TIMER
+========================= */
 
 function startTimer(){
-  timerId=setInterval(()=>{
-    timeLeft--;
-    updateTimerDisplay();
-    if(timeLeft<=0){ clearInterval(timerId); finishExam(false); }
-  },1000);
-}
-function updateTimerDisplay(){
-  const m=Math.floor(timeLeft/60), s=timeLeft%60;
-  $("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-}
 
-function renderQ(){
-  const item=QUESTIONS[idx];
-  $("qcounter").textContent="প্রশ্ন "+(idx+1)+"/"+QUESTIONS.length;
-  $("progressbar").style.width=Math.round(((idx+1)/QUESTIONS.length)*100)+"%";
-  $("qtext").textContent=(idx+1)+". "+item.q;
-  const box=$("options"); box.innerHTML="";
-  item.o.forEach((opt,i)=>{
-    const b=document.createElement("button");
-    b.className="opt"; b.type="button";
-    b.textContent=["ক","খ","গ","ঘ"][i]+") "+opt;
-    b.addEventListener("click",()=>selectOption(i));
-    if(answers[idx]!==null){
-      b.classList.add("locked"); b.disabled=true;
-      if(answers[idx]===i) b.classList.add("selected");
-    }
-    box.appendChild(b);
-  });
+clearInterval(timerId);
 
-  // Previous & Next 버튼 নিয়ন্ত্রণ
-  $("btn-prev").disabled = (idx === 0);
-  $("btn-next").disabled = (idx === QUESTIONS.length - 1);
+updateTimer();
+
+timerId=setInterval(()=>{
+
+timeLeft--;
+
+updateTimer();
+
+if(timeLeft<=0){
+
+clearInterval(timerId);
+
+finishExam(false);
+
 }
 
-function selectOption(i){
-  if(answers[idx]!==null) return;
-  answers[idx]=i;
-  renderQ();
+},1000);
+
 }
 
-$("btn-prev").addEventListener("click", ()=>{
-  if(idx > 0){
-    idx--;
-    renderQ();
-  }
+
+function updateTimer(){
+
+const min=Math.floor(timeLeft/60);
+
+const sec=timeLeft%60;
+
+$("timer").textContent=
+String(min).padStart(2,"0")
++":"
++String(sec).padStart(2,"0");
+
+}
+
+
+/* =========================
+QUESTION
+========================= */
+
+function renderQuestion(){
+
+const item=QUESTIONS[index];
+
+const total=QUESTIONS.length;
+
+
+/* Question counter */
+
+$("counter").textContent=
+"প্রশ্ন "
++(index+1)
++"/"
++total;
+
+
+/* Progress */
+
+$("progress").style.width=
+(((index+1)/total)*100)+"%";
+
+
+/* Question */
+
+$("question").textContent=
+(index+1)+". "
++item.q;
+
+
+/* Options */
+
+const box=$("options");
+
+box.innerHTML="";
+
+
+item.o.forEach((option,i)=>{
+
+const button=document.createElement("button");
+
+button.className="option";
+
+button.type="button";
+
+button.textContent=
+["ক","খ","গ","ঘ"][i]
++") "
++option;
+
+
+if(answers[index]!==null){
+
+button.classList.add("locked");
+
+button.disabled=true;
+
+if(answers[index]===i){
+
+button.classList.add("selected");
+
+}
+
+}else{
+
+button.onclick=()=>selectAnswer(i);
+
+}
+
+
+box.appendChild(button);
+
 });
 
-$("btn-next").addEventListener("click", ()=>{
-  if(idx < QUESTIONS.length - 1){
-    idx++;
-    renderQ();
-  }
-});
 
-$("btn-submit").addEventListener("click", ()=>{
-  if(confirm("তুমি কি নিশ্চিত যে পরীক্ষা এখনই জমা দিতে চাও?")){
-    clearInterval(timerId);
-    finishExam(false);
-  }
-});
+$("nextBtn").disabled=
+answers[index]===null;
 
-document.addEventListener("visibilitychange", ()=>{
-  if(document.hidden && !finished && $("screen-exam").classList.contains("hidden")===false){
-    clearInterval(timerId);
-    finishExam(true);
-  }
-});
 
-function computeScore(){
-  let correct=0, wrong=0, unattempted=0;
-  QUESTIONS.forEach((item,i)=>{
-    if(answers[i]===null) unattempted++;
-    else if(answers[i]===item.a) correct++;
-    else wrong++;
-  });
-  const score = correct - wrong*NEG;
-  return {correct,wrong,unattempted,score};
+$("nextBtn").textContent=
+index===total-1
+?"পরীক্ষা জমা দাও"
+:"পরের প্রশ্ন";
+
 }
 
-function finishExam(stoppedByTabSwitch){
-  finished=true;
-  markDone();
-  if(stoppedByTabSwitch){
-    renderResult();
-    show("screen-stopped");
-  } else {
-    renderResult();
-    show("screen-result");
-  }
+
+/* =========================
+SELECT
+========================= */
+
+function selectAnswer(optionIndex){
+
+if(answers[index]!==null)
+return;
+
+answers[index]=optionIndex;
+
+renderQuestion();
+
 }
 
-$("btn-see-result-stopped").addEventListener("click", ()=>{ show("screen-result"); });
+
+/* =========================
+NEXT
+========================= */
+
+$("nextBtn").onclick=()=>{
+
+if(answers[index]===null)
+return;
+
+
+if(index===QUESTIONS.length-1){
+
+clearInterval(timerId);
+
+finishExam(false);
+
+return;
+
+}
+
+
+index++;
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+/* =========================
+VISIBILITY
+========================= */
+
+document.addEventListener(
+"visibilitychange",
+()=>{
+
+if(
+document.hidden &&
+!finished &&
+!$("screen-exam").classList.contains("hidden")
+){
+
+clearInterval(timerId);
+
+finishExam(true);
+
+}
+
+});
+
+
+/* =========================
+SCORE
+========================= */
+
+function calculateResult(){
+
+let correct=0;
+let wrong=0;
+let unattempted=0;
+
+QUESTIONS.forEach((item,i)=>{
+
+if(answers[i]===null){
+
+unattempted++;
+
+}else if(answers[i]===item.a){
+
+correct++;
+
+}else{
+
+wrong++;
+
+}
+
+});
+
+
+const score=
+correct-(wrong*NEG);
+
+
+return{
+correct,
+wrong,
+unattempted,
+score
+};
+
+}
+
+
+/* =========================
+FINISH
+========================= */
+
+function finishExam(stopped){
+
+if(finished)
+return;
+
+finished=true;
+
+markDone();
+
+renderResult();
+
+
+if(stopped){
+
+show("screen-stopped");
+
+}else{
+
+show("screen-result");
+
+}
+
+}
+
+
+/* =========================
+STOPPED
+========================= */
+
+$("stoppedResult").onclick=()=>{
+
+show("screen-result");
+
+};
+
+
+/* =========================
+RESULT
+========================= */
 
 function renderResult(){
-  const r=computeScore();
-  $("res-name").textContent=studentName;
-  $("res-score").textContent=r.score.toFixed(2)+" / "+QUESTIONS.length;
-  $("res-detail").textContent="সঠিক: "+r.correct+" | ভুল: "+r.wrong+" | অনুত্তরিত: "+r.unattempted+" | নেগেটিভ মার্কিং: -০.২৫ প্রতি ভুলে";
 
-  const box=$("review"); box.innerHTML="";
-  QUESTIONS.forEach((item,i)=>{
-    const userAns=answers[i];
-    const isCorrect = userAns===item.a;
-    const div=document.createElement("div");
-    div.className="reviewq";
-    let html = "<div class='qt'>"+(i+1)+". "+item.q+"</div>";
-    if(userAns===null){
-      html += "<div class='ans-row wrong'><span class='badge wrong'>অনুত্তরিত (স্কিপড)</span> সঠিক উত্তর: "+["ক","খ","গ","ঘ"][item.a]+") "+item.o[item.a]+"</div>";
-    } else if(isCorrect){
-      html += "<div class='ans-row correct'><span class='badge right'>সঠিক</span> তোমার উত্তর: "+["ক","খ","গ","ঘ"][userAns]+") "+item.o[userAns]+"</div>";
-    } else {
-      html += "<div class='ans-row wrong'><span class='badge wrong'>ভুল</span> তোমার উত্তর: "+["ক","খ","গ","ঘ"][userAns]+") "+item.o[userAns]+"</div>";
-      html += "<div class='ans-row correct'>সঠিক উত্তর: "+["ক","খ","গ","ঘ"][item.a]+") "+item.o[item.a]+"</div>";
-    }
-    div.innerHTML=html;
-    box.appendChild(div);
-  });
+const result=calculateResult();
+
+$("resultName").textContent=
+studentName;
+
+$("score").textContent=
+result.score.toFixed(2)
++" / "
++QUESTIONS.length;
+
+$("correctCount").textContent=
+result.correct;
+
+$("wrongCount").textContent=
+result.wrong;
+
+$("skipCount").textContent=
+result.unattempted;
+
+$("resultDetail").textContent=
+"সঠিক: "
++result.correct
++" | ভুল: "
++result.wrong
++" | অনুত্তরিত: "
++result.unattempted
++" | নেগেটিভ: −০.২৫";
+
+
+const review=$("review");
+
+review.innerHTML="";
+
+
+QUESTIONS.forEach((item,i)=>{
+
+const userAnswer=answers[i];
+
+const correct=
+userAnswer===item.a;
+
+const div=document.createElement("div");
+
+div.className="review";
+
+
+let html=
+"<div class='review-q'>"
++(i+1)+". "
++item.q
++"</div>";
+
+
+if(userAnswer===null){
+
+html+=
+"<div class='answer wrong'>"
++"<span class='badge'>অনুত্তরিত</span>"
++"সঠিক উত্তর: "
++["ক","খ","গ","ঘ"][item.a]
++") "
++item.o[item.a]
++"</div>";
+
+}
+else if(correct){
+
+html+=
+"<div class='answer correct'>"
++"<span class='badge'>সঠিক</span>"
++"তোমার উত্তর: "
++["ক","খ","গ","ঘ"][userAnswer]
++") "
++item.o[userAnswer]
++"</div>";
+
+}
+else{
+
+html+=
+"<div class='answer wrong'>"
++"<span class='badge'>ভুল</span>"
++"তোমার উত্তর: "
++["ক","খ","গ","ঘ"][userAnswer]
++") "
++item.o[userAnswer]
++"</div>";
+
+
+html+=
+"<div class='answer correct'>"
++"সঠিক উত্তর: "
++["ক","খ","গ","ঘ"][item.a]
++") "
++item.o[item.a]
++"</div>";
+
 }
 
-$("btn-share").addEventListener("click", async ()=>{
-  const r=computeScore();
-  const text="নাম: "+studentName+"\nপরীক্ষা: "+document.title+"\nস্কোর: "+r.score.toFixed(2)+" / "+QUESTIONS.length+"\nসঠিক: "+r.correct+", ভুল: "+r.wrong+", অনুত্তরিত: "+r.unattempted+"\nCreated by: Md Foysal Uddin";
-  const msg=$("share-msg");
-  try{
-    if(navigator.share){ await navigator.share({text}); msg.textContent="শেয়ার হয়েছে।"; return; }
-  }catch(e){ if(e && e.name==="AbortError") return; }
-  try{
-    await navigator.clipboard.writeText(text);
-    msg.textContent="কপি হয়েছে — এখন হোয়াটসঅ্যাপ/মেসেঞ্জারে পেস্ট করে পাঠাও।";
-  }catch(e){
-    msg.textContent="কপি হয়নি। এই লেখাটা হাতে কপি করো: "+text.replace(/\n/g," | ");
-  }
+
+div.innerHTML=html;
+
+review.appendChild(div);
+
 });
+
+}
+
+
+/* =========================
+SHARE
+========================= */
+
+$("shareBtn").onclick=async()=>{
+
+const result=calculateResult();
+
+const text=
+"গুণগত রসায়ন — মডেল টেস্ট\n"
++"নাম: "
++studentName
++"\n"
++"স্কোর: "
++result.score.toFixed(2)
++" / "
++QUESTIONS.length
++"\n"
++"সঠিক: "
++result.correct
++"\n"
++"ভুল: "
++result.wrong
++"\n"
++"অনুত্তরিত: "
++result.unattempted;
+
+
+try{
+
+if(navigator.share){
+
+await navigator.share({
+title:"Chemistry Model Test",
+text:text
+});
+
+$("shareMsg").textContent=
+"শেয়ার হয়েছে।";
+
+return;
+
+}
+
+}catch(e){
+
+if(e.name==="AbortError")
+return;
+
+}
+
+
+try{
+
+await navigator.clipboard.writeText(text);
+
+$("shareMsg").textContent=
+"ফলাফল কপি হয়েছে। এখন Messenger/WhatsApp-এ পেস্ট করে পাঠাও।";
+
+}catch(e){
+
+$("shareMsg").textContent=
+"কপি করা যায়নি। ফলাফলটি হাতে কপি করে পাঠাও।";
+
+}
+
+};
+
 </script>
+
 </body>
 </html>
