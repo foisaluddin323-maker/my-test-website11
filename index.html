@@ -1,9 +1,14 @@
-<title>দ্বিপদী বিস্তৃতি মডেল টেস্ট</title>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>দ্বিপদী বিস্তৃতি — মডেল টেস্ট</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6fb;--card:#fff;--text:#1b2333;--sub:#65708a;--accent:#2f5bea;--accent-dark:#2145bd;--danger:#d93a3a;--danger-bg:#fdecec;--ok:#12a150;--ok-bg:#eaf8ef;--border:#dde3f0;--lock:#edf0f6;--gold:#b7791f;--gold-bg:#fff6e0;--tag-bg:#eef2ff;--sel-bg:#eef2ff;--on-accent:#fff}
+:root{--bg:#f4f6fb;--card:#fff;--text:#1b2333;--sub:#65708a;--accent:#2f5bea;--accent-dark:#2145bd;--danger:#d93a3a;--danger-bg:#fdecec;--ok:#12a150;--ok-bg:#eaf8ef;--border:#dde3f0;--lock:#edf0f6;--gold:#b7791f;--gold-bg:#fff6e0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans Bengali",system-ui,sans-serif;min-height:100vh}
 .wrap{max-width:480px;margin:auto;padding:18px 16px 40px}
@@ -11,7 +16,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans Beng
 h1{font-size:21px;margin:0 0 5px}
 h2{font-size:17px;margin:0 0 10px}
 .sub{color:var(--sub);font-size:14px;line-height:1.55;margin:0 0 14px}
-.tag{display:inline-block;background:var(--tag-bg);color:var(--accent);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:8px}
+.tag{display:inline-block;background:#eef2ff;color:var(--accent);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:8px}
 label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 input,select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text);font:inherit;margin-bottom:14px;outline:none}
 input:focus,select:focus{border-color:var(--accent)}
@@ -19,7 +24,7 @@ input:focus,select:focus{border-color:var(--accent)}
 .rules{padding-left:20px;line-height:1.7;font-size:14px;margin:0 0 18px}
 .rules li{margin-bottom:5px}
 button{font:inherit;cursor:pointer}
-.main-btn{width:100%;padding:14px;border:0;border-radius:12px;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:16px}
+.main-btn{width:100%;padding:14px;border:0;border-radius:12px;background:var(--accent);color:#fff;font-weight:700;font-size:16px}
 .main-btn:active{background:var(--accent-dark)}
 .main-btn:disabled{opacity:.5;cursor:not-allowed}
 .ghost-btn{padding:9px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-weight:600;font-size:13px}
@@ -30,12 +35,12 @@ button{font:inherit;cursor:pointer}
 .progress div{height:100%;background:var(--accent);transition:.2s}
 .qtext{font-size:17px;font-weight:600;line-height:1.55;margin-bottom:17px}
 .option{width:100%;display:block;text-align:left;padding:13px 14px;margin-bottom:10px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:15px;line-height:1.45}
-.option.selected{border-color:var(--accent);background:var(--sel-bg);font-weight:600}
+.option.selected{border-color:var(--accent);background:#eef2ff;font-weight:600}
 .option.locked{cursor:not-allowed}
 .exam-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:15px}
 .action-btn,.submit-btn{padding:12px 5px;border-radius:11px;font-weight:700;font-size:14px;border:1.5px solid var(--border);background:var(--bg);color:var(--text)}
 .action-btn:active{background:var(--lock)}
-.submit-btn{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.submit-btn{background:var(--accent);border-color:var(--accent);color:#fff}
 .action-btn:disabled{opacity:.4;cursor:not-allowed}
 .center{text-align:center}
 .score{font-size:40px;font-weight:800;color:var(--accent);margin:5px 0}
@@ -91,15 +96,13 @@ button{font:inherit;cursor:pointer}
 .del{border:0;background:none;color:var(--danger);font-size:18px;padding:4px 6px}
 .toolbar{display:flex;gap:8px;margin-bottom:12px}
 .toolbar .ghost-btn{flex:1}
-.demo{background:var(--tag-bg);color:var(--accent);border-radius:10px;padding:9px 12px;font-size:12.5px;line-height:1.5;margin-bottom:12px;font-weight:600}
-.confirm{background:var(--card);border:1.5px solid var(--accent);border-radius:12px;padding:14px;margin-top:14px}
-.confirm p{margin:0 0 10px;font-size:14px;line-height:1.55;white-space:pre-line}
-.confirm .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141f;--card:#1a2032;--text:#eef1f8;--sub:#98a3bd;--border:#2b3452;--lock:#252c40;--gold-bg:#3a2f12;--gold:#f2c14e;--tag-bg:#20294a;--sel-bg:#20294a;--danger-bg:#3a1a1f;--ok-bg:#12301f;--danger:#ff7b7b;--ok:#4ad08a;--accent:#7b9bff;--accent-dark:#5f82f5;--on-accent:#0f1530;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#10141f;--card:#1a2032;--text:#eef1f8;--sub:#98a3bd;--border:#2b3452;--lock:#252c40;--gold-bg:#3a2f12;--gold:#f2c14e;--tag-bg:#20294a;--sel-bg:#20294a;--danger-bg:#3a1a1f;--ok-bg:#12301f;--danger:#ff7b7b;--ok:#4ad08a;--accent:#7b9bff;--accent-dark:#5f82f5;--on-accent:#0f1530;color-scheme:dark}
-
-#saveBox,#retrySave{display:none!important}
+@media(prefers-color-scheme:dark){
+:root{--bg:#10141f;--card:#1a2032;--text:#eef1f8;--sub:#98a3bd;--border:#2b3452;--lock:#252c40;--gold-bg:#3a2f12;--gold:#f2c14e}
+.tag,.option.selected{background:#20294a}
+}
 </style>
+</head>
+<body>
 <div class="wrap">
 
 <div id="screen-start">
@@ -109,7 +112,7 @@ button{font:inherit;cursor:pointer}
   <p class="sub" id="startSub"></p>
   <label for="studentName">তোমার নাম লেখো</label>
   <input id="studentName" type="text" maxlength="50" placeholder="পুরো নাম লেখো" autocomplete="name">
-  
+  <p class="hint">একই নামে পরীক্ষা একবারই দেওয়া যাবে, তাই প্রতিবার পুরো নাম একইভাবে লেখো।</p>
   <div id="nameError" class="warn hidden"></div>
   <button id="goRules" class="main-btn">এগিয়ে যাও</button>
  </div>
@@ -133,13 +136,6 @@ button{font:inherit;cursor:pointer}
    <button id="prevBtn" class="action-btn" type="button">← Previous</button>
    <button id="submitBtn" class="submit-btn" type="button">Submit</button>
    <button id="nextBtn" class="action-btn" type="button">Next →</button>
-  </div>
-  <div id="confirmBox" class="confirm hidden">
-   <p id="confirmText"></p>
-   <div class="row">
-    <button id="confirmNo" class="action-btn" type="button">না, ফিরে যাও</button>
-    <button id="confirmYes" class="submit-btn" type="button">হ্যাঁ, জমা দাও</button>
-   </div>
   </div>
  </div>
 </div>
@@ -176,16 +172,55 @@ button{font:inherit;cursor:pointer}
   <div id="review"></div>
  </div>
 </div>
-</div>
-<script>
 
+<!-- ADMIN (শুধু লিংকের শেষে #admin দিলে খোলে) -->
+<div id="screen-admin" class="hidden">
+ <div id="adminLogin" class="card hidden">
+  <h2>অ্যাডমিন লগইন</h2>
+  <p class="sub">শুধু পরীক্ষক ঢুকতে পারবে।</p>
+  <label for="aEmail">ইমেইল</label>
+  <input id="aEmail" type="email" autocomplete="username">
+  <label for="aPass">পাসওয়ার্ড</label>
+  <input id="aPass" type="password" autocomplete="current-password">
+  <div id="aErr" class="warn hidden"></div>
+  <div id="aUid" class="okmsg hidden" style="user-select:all;overflow-wrap:anywhere"></div>
+  <button id="aLogin" class="main-btn">লগইন</button>
+ </div>
+ <div id="adminList" class="hidden">
+  <div class="card">
+   <span class="tag">অ্যাডমিন</span>
+   <h2 id="aTitle">ফলাফল</h2>
+   <p class="sub" id="aSub"></p>
+   <select id="aExam" class="hidden"></select>
+   <div class="toolbar">
+    <button id="aRefresh" class="ghost-btn" type="button">রিফ্রেশ</button>
+    <button id="aOut" class="ghost-btn" type="button">লগআউট</button>
+   </div>
+   <div id="aRows"></div>
+  </div>
+ </div>
+</div>
+
+</div>
+
+<script type="module">
 /* =========================
    সেটিংস (দরকারে এখানেই বদলাও)
 ========================= */
+const FB_CONFIG = {
+  apiKey: "AIzaSyD3r4YnMGYI01qdyfHHT50MW9i5zuOiIe0",
+  authDomain: "test-2eb7e.firebaseapp.com",
+  projectId: "test-2eb7e",
+  storageBucket: "test-2eb7e.firebasestorage.app",
+  messagingSenderId: "846305764672",
+  appId: "1:846305764672:web:842e6951f2daed08cf06a5"
+};
+const ADMIN_UID = "";   // অ্যাডমিন UID পেলে এখানে বসবে
 const EXAM_ID = "binomial-1";            // নতুন পরীক্ষার সময় এটা বদলাও (যেমন binomial-2)
 const EXAM_TITLE = "দ্বিপদী বিস্তৃতি — মডেল টেস্ট";
 const EXAM_MINUTES = 30;
 const NEG = 0.25;
+const SDK = "https://www.gstatic.com/firebasejs/10.12.2/";
 
 /* =========================
    QUESTIONS
@@ -270,7 +305,7 @@ function M(str){
   return String(str).split("$").map((part,k) => k%2 ? mathHTML(part) : escH(part)).join("");
 }
 
-const SCREENS = ["screen-start","screen-rules","screen-exam","screen-stopped","screen-result"];
+const SCREENS = ["screen-start","screen-rules","screen-exam","screen-stopped","screen-result","screen-admin"];
 function show(id){
   SCREENS.forEach(x => $(x).classList.add("hidden"));
   $(id).classList.remove("hidden");
@@ -280,11 +315,25 @@ function show(id){
 /* =========================
    FIREBASE (দরকারের সময় লোড হয়)
 ========================= */
+let FB = null;
+async function fb(){
+  if(FB) return FB;
+  const A = await import(SDK+"firebase-app.js");
+  const F = await import(SDK+"firebase-firestore.js");
+  const app = A.initializeApp(FB_CONFIG);
+  FB = {F, app, db: F.getFirestore(app)};
+  return FB;
+}
+fb().catch(()=>{});   // আগেভাগে লোড শুরু
 
 const normName = n => n.normalize("NFC").trim().replace(/\s+/g," ").toLowerCase();
 const docId = n => EXAM_ID + "__" + normName(n).replace(/\//g,"_");
 
-async function nameTaken(name){ return false; }
+async function nameTaken(name){
+  const {F,db} = await fb();
+  const snap = await withTimeout(F.getDoc(F.doc(db,"friendNames",docId(name))), 12000);
+  return snap.exists();
+}
 
 /* =========================
    STATE
@@ -308,6 +357,8 @@ const rules = [
   "Previous দিয়ে আগের প্রশ্নে যাওয়া যাবে।",
   "সময় শেষ হলে পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হবে।",
   "পরীক্ষার সময় পেজ/অ্যাপ থেকে বের হলে পরীক্ষা বন্ধ হয়ে যাবে।",
+  "একই নামে পরীক্ষা একবারই দেওয়া যাবে।",
+  "তোমার নাম, নম্বর ও কত সময়ে জমা দিয়েছ তা সংরক্ষিত হবে।",
   "শেষে স্কোর, সঠিক, ভুল ও অনুত্তরিত প্রশ্ন দেখা যাবে।"
 ];
 rules.forEach(t => { const li=document.createElement("li"); li.textContent=t; $("rulesList").appendChild(li); });
@@ -375,7 +426,6 @@ function updateTimer(){
    RENDER QUESTION
 ========================= */
 function renderQuestion(){
-  $("confirmBox").classList.add("hidden");
   const item = QUESTIONS[index], total = QUESTIONS.length;
   $("counter").textContent = "প্রশ্ন "+(index+1)+"/"+total;
   $("progress").style.width = (((index+1)/total)*100)+"%";
@@ -407,12 +457,9 @@ $("nextBtn").onclick = () => { if(index<QUESTIONS.length-1){ index++; renderQues
 $("submitBtn").onclick = () => {
   const un = answers.filter(x => x===null).length;
   let msg = "তুমি কি পরীক্ষা জমা দিতে চাও?";
-  if(un>0) msg += "\n"+un+"টি প্রশ্নের উত্তর দেওয়া হয়নি।";
-  $("confirmText").textContent = msg;
-  $("confirmBox").classList.remove("hidden");
+  if(un>0) msg += "\n\n"+un+"টি প্রশ্নের উত্তর দেওয়া হয়নি।";
+  if(confirm(msg)) finishExam("submitted");
 };
-$("confirmNo").onclick = () => $("confirmBox").classList.add("hidden");
-$("confirmYes").onclick = () => { $("confirmBox").classList.add("hidden"); finishExam("submitted"); };
 
 /* পেজ/অ্যাপ ছাড়লে পরীক্ষা বন্ধ */
 document.addEventListener("visibilitychange", () => {
@@ -490,12 +537,25 @@ function setSave(state){
   box.className = "savebox";
   btn.classList.add("hidden");
   if(state==="wait"){ box.classList.add("wait"); box.textContent = "ফলাফল সেভ হচ্ছে… (পেজ বন্ধ কোরো না)"; }
-  else if(state==="ok"){ box.className = "okmsg"; box.textContent = "ডেমো: ফলাফল সেভ করা হয়নি।"; }
+  else if(state==="ok"){ box.className = "okmsg"; box.textContent = "✓ তোমার ফলাফল সেভ হয়েছে।"; }
   else if(state==="dup"){ box.classList.add("fail"); box.textContent = "এই নামে ফলাফল আগেই সেভ হয়ে আছে। এই ফলাফল নতুন করে সেভ হয়নি।"; }
   else { box.classList.add("fail"); box.textContent = "ফলাফল সেভ করা যায়নি। ইন্টারনেট ঠিক আছে কিনা দেখে আবার চেষ্টা করো। পেজ বন্ধ কোরো না।"; btn.classList.remove("hidden"); }
 }
 
-async function saveResult(){ return; }
+async function saveResult(){
+  const {F,db} = await fb();
+  const r = calculateResult();
+  const id = docId(studentName);
+  const b = F.writeBatch(db);
+  b.set(F.doc(db,"friendNames",id), {examId:EXAM_ID, createdAt:F.serverTimestamp()});
+  b.set(F.doc(db,"friendResults",id), {
+    examId:EXAM_ID, name:studentName,
+    score:r.score, correct:r.correct, wrong:r.wrong, unanswered:r.unattempted,
+    total:QUESTIONS.length, timeSec:timeTaken, status:finalStatus,
+    createdAt:F.serverTimestamp()
+  });
+  await b.commit();
+}
 
 async function doSave(){
   if(saved || saving) return;
@@ -531,6 +591,125 @@ $("shareBtn").onclick = async () => {
   }
 };
 
-show("screen-start");
+/* =========================
+   ADMIN  (লিংকের শেষে #admin)
+========================= */
+let AUTH = null, AUTHMOD = null, adminInit = false, ROWS = [];
 
+function adminView(which){
+  $("adminLogin").classList.toggle("hidden", which!=="login");
+  $("adminList").classList.toggle("hidden", which!=="list");
+}
+
+async function openAdmin(){
+  show("screen-admin");
+  adminView("login");
+  $("aErr").classList.add("hidden");
+  try{
+    if(!adminInit){
+      const {app} = await fb();
+      AUTHMOD = await import(SDK+"firebase-auth.js");
+      AUTH = AUTHMOD.getAuth(app);
+      adminInit = true;
+      AUTHMOD.onAuthStateChanged(AUTH, u => {
+        if(location.hash !== "#admin") return;
+        if(u && ADMIN_UID && u.uid === ADMIN_UID){ adminView("list"); loadRows(); }
+        else if(u && !ADMIN_UID){
+          adminView("login");
+          $("aUid").textContent = "তোমার অ্যাডমিন UID: "+u.uid;
+          $("aUid").classList.remove("hidden");
+        }else{
+          if(u) AUTHMOD.signOut(AUTH);
+          adminView("login");
+        }
+      });
+    }
+  }catch(e){
+    $("aErr").textContent = "লোড করা যায়নি। ইন্টারনেট দেখে পেজ রিফ্রেশ করো।";
+    $("aErr").classList.remove("hidden");
+  }
+}
+
+$("aLogin").onclick = async () => {
+  const err = $("aErr"); err.classList.add("hidden");
+  if(!AUTH){ err.textContent = "একটু অপেক্ষা করে আবার চাপো।"; err.classList.remove("hidden"); return; }
+  try{
+    await AUTHMOD.signInWithEmailAndPassword(AUTH, $("aEmail").value.trim(), $("aPass").value);
+  }catch(e){
+    err.textContent = "ইমেইল বা পাসওয়ার্ড ঠিক নয়।"; err.classList.remove("hidden");
+  }
+};
+$("aOut").onclick = async () => { if(AUTH){ await AUTHMOD.signOut(AUTH); } adminView("login"); $("aPass").value = ""; };
+$("aRefresh").onclick = () => loadRows();
+$("aExam").onchange = () => renderRows();
+
+async function loadRows(){
+  $("aSub").textContent = "লোড হচ্ছে…";
+  try{
+    const {F,db} = await fb();
+    const snap = await withTimeout(F.getDocs(F.collection(db,"friendResults")), 15000);
+    ROWS = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    const ids = [...new Set(ROWS.map(r => r.examId))];
+    const sel = $("aExam"); const cur = sel.value;
+    sel.innerHTML = "";
+    ids.forEach(x => { const o=document.createElement("option"); o.value=x; o.textContent="পরীক্ষা: "+x; sel.appendChild(o); });
+    sel.classList.toggle("hidden", ids.length<2);
+    sel.value = ids.includes(cur) ? cur : (ids.includes(EXAM_ID) ? EXAM_ID : (ids[0]||""));
+    renderRows();
+  }catch(e){
+    $("aSub").textContent = "ফলাফল আনা যায়নি ("+(e && e.code ? e.code : "error")+")। রুল ঠিকভাবে পাবলিশ হয়েছে কিনা দেখো।";
+  }
+}
+
+function renderRows(){
+  const ex = $("aExam").value || EXAM_ID;
+  const list = ROWS.filter(r => r.examId===ex).sort((a,b) =>
+    (b.score-a.score) || (a.timeSec-b.timeSec) ||
+    ((a.createdAt&&a.createdAt.seconds||0)-(b.createdAt&&b.createdAt.seconds||0)));
+  $("aTitle").textContent = EXAM_TITLE;
+  $("aSub").textContent = "মোট "+toBn(list.length)+" জন পরীক্ষা দিয়েছে • নম্বর বেশি হলে ওপরে, সমান হলে যে কম সময়ে শেষ করেছে সে ওপরে";
+  const box = $("aRows"); box.innerHTML = "";
+  if(!list.length){ const p=document.createElement("p"); p.className="sub"; p.textContent="এখনো কেউ পরীক্ষা দেয়নি।"; box.appendChild(p); return; }
+  list.forEach((r,i) => {
+    const row = document.createElement("div"); row.className = "arow";
+    const rk = document.createElement("div"); rk.className = "rk"+(i<3?" top":""); rk.textContent = toBn(i+1);
+    const rn = document.createElement("div"); rn.className = "rn";
+    const nm = document.createElement("b"); nm.textContent = r.name;
+    const d1 = document.createElement("span");
+    d1.textContent = "সঠিক "+toBn(r.correct)+" • ভুল "+toBn(r.wrong)+" • বাদ "+toBn(r.unanswered)+" • সময় "+fmtTime(r.timeSec);
+    const d2 = document.createElement("span");
+    let when = "";
+    try{ if(r.createdAt) when = r.createdAt.toDate().toLocaleString("bn-BD",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}); }catch(e){}
+    d2.textContent = (STATUS_BN[r.status]||r.status)+(when?" • "+when:"");
+    rn.append(nm,d1,d2);
+    const sc = document.createElement("div"); sc.className = "rs"; sc.textContent = Number(r.score).toFixed(2);
+    const del = document.createElement("button"); del.className = "del"; del.type = "button"; del.textContent = "✕"; del.title = "মুছে ফেলো";
+    del.onclick = async () => {
+      if(!confirm(r.name+" এর ফলাফল মুছে ফেলবে? মুছলে এই নামে সে আবার পরীক্ষা দিতে পারবে।")) return;
+      try{
+        const {F,db} = await fb();
+        const b = F.writeBatch(db);
+        b.delete(F.doc(db,"friendResults",r.id));
+        b.delete(F.doc(db,"friendNames",r.id));
+        await b.commit();
+        loadRows();
+      }catch(e){ alert("মোছা যায়নি।"); }
+    };
+    row.append(rk,rn,sc,del);
+    box.appendChild(row);
+  });
+}
+
+/* =========================
+   ROUTE + LOAD
+========================= */
+function route(){
+  if(examRunning) return;
+  if(location.hash === "#admin") openAdmin();
+  else if(!$("screen-admin").classList.contains("hidden")) show("screen-start");
+}
+window.addEventListener("hashchange", route);
+if(location.hash === "#admin") openAdmin(); else show("screen-start");
 </script>
+</body>
+ </html>
